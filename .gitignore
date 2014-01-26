@@ -71,6 +71,7 @@
 *.so*
 *.dylib*
 *.dll*
+*.exe
 # Exceptions
 !/test/bctest
 !/crypto/des/times/486-50.sol
