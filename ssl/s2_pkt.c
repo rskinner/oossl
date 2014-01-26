@@ -115,6 +115,10 @@
 #include <errno.h>
 #define USE_SOCKETS
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 static int read_n(SSL *s,unsigned int n,unsigned int max,unsigned int extend);
 static int n_do_ssl_write(SSL *s, const unsigned char *buf, unsigned int len);
 static int write_pending(SSL *s, const unsigned char *buf, unsigned int len);
@@ -741,3 +745,8 @@ static void *dummy=&dummy;
 # endif
 
 #endif
+
+#ifdef __cplusplus
+}
+#endif
+

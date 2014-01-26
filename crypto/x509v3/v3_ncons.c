@@ -79,7 +79,7 @@ static int nc_dns(ASN1_IA5STRING *sub, ASN1_IA5STRING *dns);
 static int nc_email(ASN1_IA5STRING *sub, ASN1_IA5STRING *eml);
 static int nc_uri(ASN1_IA5STRING *uri, ASN1_IA5STRING *base);
 
-const X509V3_EXT_METHOD v3_name_constraints = {
+extern const X509V3_EXT_METHOD v3_name_constraints = {
 	NID_name_constraints, 0,
 	ASN1_ITEM_ref(NAME_CONSTRAINTS),
 	0,0,0,0,

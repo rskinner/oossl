@@ -122,8 +122,12 @@
 #include "ssl_locl.h"
 #include "srtp.h"
 
+#ifdef __cplusplus
+extern "C" {
+#endif
 
-static SRTP_PROTECTION_PROFILE srtp_known_profiles[]=
+
+extern SRTP_PROTECTION_PROFILE srtp_known_profiles[]=
     {
     {
     "SRTP_AES128_CM_SHA1_80",
@@ -489,5 +493,8 @@ int ssl_parse_serverhello_use_srtp_ext(SSL *s, unsigned char *d, int len,int *al
 	return 1;
 	}
 
+#ifdef __cplusplus
+}
+#endif
 
 #endif

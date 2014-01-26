@@ -235,7 +235,7 @@ static int pkey_hmac_ctrl_str(EVP_PKEY_CTX *ctx,
 	return -2;
 	}
 
-const EVP_PKEY_METHOD hmac_pkey_meth = 
+extern const EVP_PKEY_METHOD hmac_pkey_meth = 
 	{
 	EVP_PKEY_HMAC,
 	0,

@@ -77,7 +77,7 @@ static POLICYQUALINFO *notice_section(X509V3_CTX *ctx,
 					STACK_OF(CONF_VALUE) *unot, int ia5org);
 static int nref_nos(STACK_OF(ASN1_INTEGER) *nnums, STACK_OF(CONF_VALUE) *nos);
 
-const X509V3_EXT_METHOD v3_cpols = {
+extern const X509V3_EXT_METHOD v3_cpols = {
 NID_certificate_policies, 0,ASN1_ITEM_ref(CERTIFICATEPOLICIES),
 0,0,0,0,
 0,0,
@@ -274,24 +274,24 @@ static POLICYQUALINFO *notice_section(X509V3_CTX *ctx,
 {
 	int i, ret;
 	CONF_VALUE *cnf;
-	USERNOTICE *not;
+	USERNOTICE *notice;
 	POLICYQUALINFO *qual;
 	if(!(qual = POLICYQUALINFO_new())) goto merr;
 	qual->pqualid = OBJ_nid2obj(NID_id_qt_unotice);
-	if(!(not = USERNOTICE_new())) goto merr;
-	qual->d.usernotice = not;
+	if(!(notice = USERNOTICE_new())) goto merr;
+	qual->d.usernotice = notice;
 	for(i = 0; i < sk_CONF_VALUE_num(unot); i++) {
 		cnf = sk_CONF_VALUE_value(unot, i);
 		if(!strcmp(cnf->name, "explicitText")) {
-			not->exptext = M_ASN1_VISIBLESTRING_new();
-			if(!ASN1_STRING_set(not->exptext, cnf->value,
+			notice->exptext = M_ASN1_VISIBLESTRING_new();
+			if(!ASN1_STRING_set(notice->exptext, cnf->value,
 						 strlen(cnf->value))) goto merr;
 		} else if(!strcmp(cnf->name, "organization")) {
 			NOTICEREF *nref;
-			if(!not->noticeref) {
+			if(!notice->noticeref) {
 				if(!(nref = NOTICEREF_new())) goto merr;
-				not->noticeref = nref;
-			} else nref = not->noticeref;
+				notice->noticeref = nref;
+			} else nref = notice->noticeref;
 			if(ia5org) nref->organization->type = V_ASN1_IA5STRING;
 			else nref->organization->type = V_ASN1_VISIBLESTRING;
 			if(!ASN1_STRING_set(nref->organization, cnf->value,
@@ -299,10 +299,10 @@ static POLICYQUALINFO *notice_section(X509V3_CTX *ctx,
 		} else if(!strcmp(cnf->name, "noticeNumbers")) {
 			NOTICEREF *nref;
 			STACK_OF(CONF_VALUE) *nos;
-			if(!not->noticeref) {
+			if(!notice->noticeref) {
 				if(!(nref = NOTICEREF_new())) goto merr;
-				not->noticeref = nref;
-			} else nref = not->noticeref;
+				notice->noticeref = nref;
+			} else nref = notice->noticeref;
 			nos = X509V3_parse_list(cnf->value);
 			if(!nos || !sk_CONF_VALUE_num(nos)) {
 				X509V3err(X509V3_F_NOTICE_SECTION,X509V3_R_INVALID_NUMBERS);
@@ -320,8 +320,8 @@ static POLICYQUALINFO *notice_section(X509V3_CTX *ctx,
 		}
 	}
 
-	if(not->noticeref && 
-	      (!not->noticeref->noticenos || !not->noticeref->organization)) {
+	if(notice->noticeref && 
+	      (!notice->noticeref->noticenos || !notice->noticeref->organization)) {
 			X509V3err(X509V3_F_NOTICE_SECTION,X509V3_R_NEED_ORGANIZATION_AND_NUMBERS);
 			goto err;
 	}

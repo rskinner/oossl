@@ -59,6 +59,10 @@
 #include <openssl/rc4.h>
 #include <openssl/md5.h>
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #ifndef EVP_CIPH_FLAG_AEAD_CIPHER
 #define EVP_CIPH_FLAG_AEAD_CIPHER	0x200000
 #define EVP_CTRL_AEAD_TLS1_AAD		0x16
@@ -294,4 +298,9 @@ const EVP_CIPHER *EVP_rc4_hmac_md5(void)
 	{
 	return(&r4_hmac_md5_cipher);
 	}
+
+#ifdef __cplusplus
+}
+#endif
+
 #endif

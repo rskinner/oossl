@@ -65,6 +65,10 @@
 #include <openssl/err.h>
 #include <openssl/ssl.h>
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 static int ssl_write(BIO *h, const char *buf, int num);
 static int ssl_read(BIO *h, char *buf, int size);
 static int ssl_puts(BIO *h, const char *str);
@@ -83,7 +87,7 @@ typedef struct bio_ssl_st
 	unsigned long last_time;
 	} BIO_SSL;
 
-static BIO_METHOD methods_sslp=
+extern BIO_METHOD methods_sslp=
 	{
 	BIO_TYPE_SSL,"ssl",
 	ssl_write,
@@ -603,3 +607,8 @@ void BIO_ssl_shutdown(BIO *b)
 		b=b->next_bio;
 		}
 	}
+
+#ifdef __cplusplus
+}
+#endif
+

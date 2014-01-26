@@ -650,7 +650,7 @@ static int dsa_pkey_ctrl(EVP_PKEY *pkey, int op, long arg1, void *arg2)
 
 /* NB these are sorted in pkey_id order, lowest first */
 
-const EVP_PKEY_ASN1_METHOD dsa_asn1_meths[] = 
+extern const EVP_PKEY_ASN1_METHOD dsa_asn1_meths[] = 
 	{
 
 		{

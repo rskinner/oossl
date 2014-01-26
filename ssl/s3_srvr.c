@@ -169,6 +169,10 @@
 #endif
 #include <openssl/md5.h>
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 static const SSL_METHOD *ssl3_get_server_method(int ver);
 
 static const SSL_METHOD *ssl3_get_server_method(int ver)
@@ -3839,3 +3843,8 @@ f_err:
 	return -1;
 	}
 #endif
+
+#ifdef __cplusplus
+}
+#endif
+

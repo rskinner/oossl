@@ -60,6 +60,10 @@
 #include <openssl/objects.h>
 #include "ssl_locl.h"
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 static const SSL_METHOD *tls1_get_method(int ver)
 	{
 	if (ver == TLS1_2_VERSION)
@@ -88,4 +92,9 @@ IMPLEMENT_tls_meth_func(TLS1_VERSION, TLSv1_method,
 			ssl3_connect,
 			tls1_get_method,
 			TLSv1_enc_data)
+
+
+#ifdef __cplusplus
+}
+#endif
 

@@ -527,7 +527,7 @@ static int pkey_ec_keygen(EVP_PKEY_CTX *ctx, EVP_PKEY *pkey)
 	return EC_KEY_generate_key(pkey->pkey.ec);
 	}
 
-const EVP_PKEY_METHOD ec_pkey_meth = 
+extern const EVP_PKEY_METHOD ec_pkey_meth = 
 	{
 	EVP_PKEY_EC,
 	0,

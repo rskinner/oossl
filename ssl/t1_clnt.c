@@ -63,6 +63,10 @@
 #include <openssl/objects.h>
 #include <openssl/evp.h>
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 static const SSL_METHOD *tls1_get_client_method(int ver);
 static const SSL_METHOD *tls1_get_client_method(int ver)
 	{
@@ -92,4 +96,9 @@ IMPLEMENT_tls_meth_func(TLS1_VERSION, TLSv1_client_method,
 			ssl3_connect,
 			tls1_get_client_method,
 			TLSv1_enc_data)
+
+
+#ifdef __cplusplus
+}
+#endif
 

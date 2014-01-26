@@ -61,6 +61,11 @@
 #include <openssl/rand.h>
 #include "modes_lcl.h"
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+
 #ifndef EVP_CIPH_FLAG_AEAD_CIPHER
 #define EVP_CIPH_FLAG_AEAD_CIPHER	0x200000
 #define EVP_CTRL_AEAD_TLS1_AAD		0x16
@@ -850,4 +855,9 @@ const EVP_CIPHER *EVP_aes_256_cbc_hmac_sha256(void)
 	return NULL;
 	}
 #endif
+
+#ifdef __cplusplus
+}
+#endif
+
 #endif

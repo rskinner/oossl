@@ -132,6 +132,10 @@
 #include <openssl/bn.h>
 #include "ssl_locl.h"
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 int SSL_get_ex_data_X509_STORE_CTX_idx(void)
 	{
 	static volatile int ssl_x509_store_ctx_idx= -1;
@@ -1230,3 +1234,7 @@ int ssl_cert_set_cert_store(CERT *c, X509_STORE *store, int chain, int ref)
 	return 1;
 	}
 
+
+#ifdef __cplusplus
+}
+#endif

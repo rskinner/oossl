@@ -62,6 +62,10 @@
 #include <openssl/opensslconf.h>
 #include <openssl/sha.h>
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #define DATA_ORDER_IS_BIG_ENDIAN
 
 #define HASH_LONG               SHA_LONG
@@ -434,4 +438,8 @@ static void HASH_BLOCK_DATA_ORDER (SHA_CTX *c, const void *p, size_t num)
 	}
 #endif
 
+#endif
+
+#ifdef __cplusplus
+}
 #endif

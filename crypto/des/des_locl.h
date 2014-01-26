@@ -93,6 +93,10 @@
 #include <string.h>
 #endif
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #ifdef OPENSSL_BUILD_SHLIBCRYPTO
 # undef OPENSSL_EXTERN
 # define OPENSSL_EXTERN OPENSSL_EXPORT
@@ -431,4 +435,9 @@ void fcrypt_body(DES_LONG *out,DES_key_schedule *ks,
 #ifdef OPENSSL_SMALL_FOOTPRINT
 #undef DES_UNROLL
 #endif
+
+#ifdef __cplusplus
+}
+#endif
+
 #endif

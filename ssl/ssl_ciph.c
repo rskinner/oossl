@@ -150,6 +150,10 @@
 #endif
 #include "ssl_locl.h"
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #define SSL_ENC_DES_IDX		0
 #define SSL_ENC_3DES_IDX	1
 #define SSL_ENC_RC4_IDX		2
@@ -167,7 +171,7 @@
 #define SSL_ENC_NUM_IDX		14
 
 
-static const EVP_CIPHER *ssl_cipher_methods[SSL_ENC_NUM_IDX]={
+extern const EVP_CIPHER *ssl_cipher_methods[SSL_ENC_NUM_IDX]={
 	NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL
 	};
 
@@ -175,7 +179,7 @@ static const EVP_CIPHER *ssl_cipher_methods[SSL_ENC_NUM_IDX]={
 #define SSL_COMP_ZLIB_IDX	1
 #define SSL_COMP_NUM_IDX	2
 
-static STACK_OF(SSL_COMP) *ssl_comp_methods=NULL;
+extern STACK_OF(SSL_COMP) *ssl_comp_methods=NULL;
 
 #define SSL_MD_MD5_IDX	0
 #define SSL_MD_SHA1_IDX	1
@@ -187,23 +191,23 @@ static STACK_OF(SSL_COMP) *ssl_comp_methods=NULL;
  * defined in the
  * ssl_locl.h */
 #define SSL_MD_NUM_IDX	SSL_MAX_DIGEST 
-static const EVP_MD *ssl_digest_methods[SSL_MD_NUM_IDX]={
+extern const EVP_MD *ssl_digest_methods[SSL_MD_NUM_IDX]={
 	NULL,NULL,NULL,NULL,NULL,NULL
 	};
 /* PKEY_TYPE for GOST89MAC is known in advance, but, because
  * implementation is engine-provided, we'll fill it only if
  * corresponding EVP_PKEY_METHOD is found 
  */
-static int  ssl_mac_pkey_id[SSL_MD_NUM_IDX]={
+extern int  ssl_mac_pkey_id[SSL_MD_NUM_IDX]={
 	EVP_PKEY_HMAC,EVP_PKEY_HMAC,EVP_PKEY_HMAC,NID_undef,
 	EVP_PKEY_HMAC,EVP_PKEY_HMAC
 	};
 
-static int ssl_mac_secret_size[SSL_MD_NUM_IDX]={
+extern int ssl_mac_secret_size[SSL_MD_NUM_IDX]={
 	0,0,0,0,0,0
 	};
 
-static int ssl_handshake_digest_flag[SSL_MD_NUM_IDX]={
+extern int ssl_handshake_digest_flag[SSL_MD_NUM_IDX]={
 	SSL_HANDSHAKE_MAC_MD5,SSL_HANDSHAKE_MAC_SHA,
 	SSL_HANDSHAKE_MAC_GOST94, 0, SSL_HANDSHAKE_MAC_SHA256,
 	SSL_HANDSHAKE_MAC_SHA384
@@ -223,7 +227,7 @@ typedef struct cipher_order_st
 	struct cipher_order_st *next,*prev;
 	} CIPHER_ORDER;
 
-static const SSL_CIPHER cipher_aliases[]={
+extern const SSL_CIPHER cipher_aliases[]={
 	/* "ALL" doesn't include eNULL (must be specifically enabled) */
 	{0,SSL_TXT_ALL,0,     0,0,~SSL_eNULL,0,0,0,0,0,0},
 	/* "COMPLEMENTOFALL" */
@@ -2002,3 +2006,8 @@ const SSL_CIPHER *SSL_CIPHER_find(SSL *ssl, const unsigned char *ptr)
 	{
 	return ssl->method->get_cipher_by_char(ptr);
 	}
+
+#ifdef __cplusplus
+}
+#endif
+

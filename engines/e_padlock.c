@@ -78,6 +78,10 @@
 #include <openssl/err.h>
 #include <openssl/modes.h>
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #ifndef OPENSSL_NO_HW
 #ifndef OPENSSL_NO_HW_PADLOCK
 
@@ -132,9 +136,19 @@ void ENGINE_load_padlock (void)
 /* Function for ENGINE detection and control */
 static int padlock_available(void);
 static int padlock_init(ENGINE *e);
+static int padlock_rand_status(void);
+static int padlock_rand_bytes(unsigned char *output, int count);
 
 /* RNG Stuff */
-static RAND_METHOD padlock_rand;
+/* Prepare structure for registration */
+static RAND_METHOD padlock_rand = {
+	NULL,			/* seed */
+	padlock_rand_bytes,	/* bytes */
+	NULL,			/* cleanup */
+	NULL,			/* add */
+	padlock_rand_bytes,	/* pseudorand */
+	padlock_rand_status,	/* rand status */
+};
 
 /* Cipher Stuff */
 #ifndef OPENSSL_NO_AES
@@ -758,16 +772,6 @@ padlock_rand_status(void)
 	return 1;
 }
 
-/* Prepare structure for registration */
-static RAND_METHOD padlock_rand = {
-	NULL,			/* seed */
-	padlock_rand_bytes,	/* bytes */
-	NULL,			/* cleanup */
-	NULL,			/* add */
-	padlock_rand_bytes,	/* pseudorand */
-	padlock_rand_status,	/* rand status */
-};
-
 #else  /* !COMPILE_HW_PADLOCK */
 #ifndef OPENSSL_NO_DYNAMIC_ENGINE
 OPENSSL_EXPORT
@@ -780,3 +784,7 @@ IMPLEMENT_DYNAMIC_CHECK_FN()
 
 #endif /* !OPENSSL_NO_HW_PADLOCK */
 #endif /* !OPENSSL_NO_HW */
+
+#ifdef __cplusplus
+}
+#endif

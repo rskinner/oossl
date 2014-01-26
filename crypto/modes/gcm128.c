@@ -60,6 +60,10 @@
 #endif
 #include <assert.h>
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #if defined(BSWAP4) && defined(STRICT_ALIGNMENT)
 /* redefine, because alignment is ensured */
 #undef	GETU32
@@ -1850,5 +1854,9 @@ int main()
 #endif
 
 	return ret;
+}
+#endif
+
+#ifdef __cplusplus
 }
 #endif

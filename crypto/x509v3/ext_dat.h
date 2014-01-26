@@ -57,6 +57,10 @@
  */
 /* This file contains a table of "standard" extensions */
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 extern X509V3_EXT_METHOD v3_bcons, v3_nscert, v3_key_usage, v3_ext_ku;
 extern X509V3_EXT_METHOD v3_pkey_usage_period, v3_sxnet, v3_info, v3_sinfo;
 extern X509V3_EXT_METHOD v3_ns_ia5_list[], v3_alt[], v3_skey_id, v3_akey_id;
@@ -130,3 +134,7 @@ static const X509V3_EXT_METHOD *standard_exts[] = {
 
 #define STANDARD_EXTENSION_COUNT (sizeof(standard_exts)/sizeof(X509V3_EXT_METHOD *))
 
+
+#ifdef __cplusplus
+}
+#endif

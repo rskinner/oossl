@@ -157,7 +157,11 @@
 #include <openssl/dh.h>
 #endif
 
-const char ssl3_version_str[]="SSLv3" OPENSSL_VERSION_PTEXT;
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+extern const char ssl3_version_str[]="SSLv3" OPENSSL_VERSION_PTEXT;
 
 #define SSL3_NUM_CIPHERS	(sizeof(ssl3_ciphers)/sizeof(SSL_CIPHER))
 
@@ -3134,7 +3138,7 @@ void ssl3_clear(SSL *s)
 	}
 
 #ifndef OPENSSL_NO_SRP
-static char * MS_CALLBACK srp_password_from_info_cb(SSL *s, void *arg)
+extern char * MS_CALLBACK srp_password_from_info_cb(SSL *s, void *arg)
 	{
 	return BUF_strdup(s->srp_ctx.info) ;
 	}
@@ -3709,26 +3713,26 @@ long ssl3_ctx_ctrl(SSL_CTX *ctx, int cmd, long larg, void *parg)
 #ifndef OPENSSL_NO_DH
 	case SSL_CTRL_SET_TMP_DH:
 		{
-		DH *new=NULL,*dh;
+		DH *dup=NULL,*dh;
 
 		dh=(DH *)parg;
-		if ((new=DHparams_dup(dh)) == NULL)
+		if ((dup=DHparams_dup(dh)) == NULL)
 			{
 			SSLerr(SSL_F_SSL3_CTX_CTRL,ERR_R_DH_LIB);
 			return 0;
 			}
 		if (!(ctx->options & SSL_OP_SINGLE_DH_USE))
 			{
-			if (!DH_generate_key(new))
+			if (!DH_generate_key(dup))
 				{
 				SSLerr(SSL_F_SSL3_CTX_CTRL,ERR_R_DH_LIB);
-				DH_free(new);
+				DH_free(dup);
 				return 0;
 				}
 			}
 		if (cert->dh_tmp != NULL)
 			DH_free(cert->dh_tmp);
-		cert->dh_tmp=new;
+		cert->dh_tmp=dup;
 		return 1;
 		}
 		/*break; */
@@ -4505,4 +4509,8 @@ long ssl_get_algorithm2(SSL *s)
 		return SSL_HANDSHAKE_MAC_SHA256 | TLS1_PRF_SHA256;
 	return alg2;
 	}
+
+#ifdef __cplusplus
+}
+#endif
 

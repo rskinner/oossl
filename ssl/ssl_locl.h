@@ -165,6 +165,10 @@
 #include <openssl/ssl.h>
 #include <openssl/symhacks.h>
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #ifdef OPENSSL_BUILD_SHLIBSSL
 # undef OPENSSL_EXTERN
 # define OPENSSL_EXTERN OPENSSL_EXPORT
@@ -1359,5 +1363,9 @@ void ssl3_cbc_digest_record(
 void tls_fips_digest_extra(
 	const EVP_CIPHER_CTX *cipher_ctx, EVP_MD_CTX *mac_ctx,
 	const unsigned char *data, size_t data_len, size_t orig_len);
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif

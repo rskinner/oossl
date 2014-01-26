@@ -117,6 +117,10 @@
 #include <openssl/objects.h>
 #include <openssl/evp.h>
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 static const SSL_METHOD *ssl2_get_client_method(int ver);
 static int get_server_finished(SSL *s);
 static int get_server_verify(SSL *s);
@@ -1118,6 +1122,10 @@ end:
 	EVP_PKEY_free(pkey);
 	return(i);
 	}
+#ifdef __cplusplus
+}
+#endif
+
 #else /* !OPENSSL_NO_SSL2 */
 
 # if PEDANTIC

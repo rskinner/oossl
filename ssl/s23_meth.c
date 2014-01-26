@@ -60,6 +60,10 @@
 #include <openssl/objects.h>
 #include "ssl_locl.h"
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 static const SSL_METHOD *ssl23_get_method(int ver);
 static const SSL_METHOD *ssl23_get_method(int ver)
 	{
@@ -89,4 +93,9 @@ IMPLEMENT_ssl23_meth_func(SSLv23_method,
 			ssl23_accept,
 			ssl23_connect,
 			ssl23_get_method)
+
+
+#ifdef __cplusplus
+}
+#endif
 

@@ -138,7 +138,7 @@ static int old_hmac_encode(const EVP_PKEY *pkey, unsigned char **pder)
 
 #endif
 
-const EVP_PKEY_ASN1_METHOD hmac_asn1_meth = 
+extern const EVP_PKEY_ASN1_METHOD hmac_asn1_meth = 
 	{
 	EVP_PKEY_HMAC,
 	EVP_PKEY_HMAC,

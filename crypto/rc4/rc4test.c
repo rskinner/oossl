@@ -62,6 +62,10 @@
 
 #include "../e_os.h"
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #ifdef OPENSSL_NO_RC4
 int main(int argc, char *argv[])
 {
@@ -239,4 +243,8 @@ int main(int argc, char *argv[])
 	EXIT(err);
 	return(0);
 	}
+#endif
+
+#ifdef __cplusplus
+}
 #endif

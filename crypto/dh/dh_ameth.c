@@ -600,7 +600,7 @@ static int dh_pkey_ctrl(EVP_PKEY *pkey, int op, long arg1, void *arg2)
 
 	}
 
-const EVP_PKEY_ASN1_METHOD dh_asn1_meth = 
+extern const EVP_PKEY_ASN1_METHOD dh_asn1_meth = 
 	{
 	EVP_PKEY_DH,
 	EVP_PKEY_DH,
@@ -633,7 +633,7 @@ const EVP_PKEY_ASN1_METHOD dh_asn1_meth =
 	0
 	};
 
-const EVP_PKEY_ASN1_METHOD dhx_asn1_meth = 
+extern const EVP_PKEY_ASN1_METHOD dhx_asn1_meth = 
 	{
 	EVP_PKEY_DHX,
 	EVP_PKEY_DHX,

@@ -42,6 +42,10 @@
 
 #include "rsaz_exp.h"
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 /*
  * See crypto/bn/asm/rsaz-avx2.pl for further details.
  */
@@ -316,3 +320,8 @@ void RSAZ_512_mod_exp(BN_ULONG result[8],
 
 	OPENSSL_cleanse(storage,sizeof(storage));
 }
+
+#ifdef __cplusplus
+}
+#endif
+

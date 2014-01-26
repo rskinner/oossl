@@ -172,7 +172,7 @@ int MAIN(int argc, char **argv)
 	BIO *in=NULL,*out=NULL;
 	int informat,outformat,verify=0,noout=0,text=0,keyform=FORMAT_PEM;
 	int nodes=0,kludge=0,newhdr=0,subject=0,pubkey=0;
-	char *infile,*outfile,*prog,*keyfile=NULL,*template=NULL,*keyout=NULL;
+	char *infile,*outfile,*prog,*keyfile=NULL,*configuration=NULL,*keyout=NULL;
 #ifndef OPENSSL_NO_ENGINE
 	char *engine=NULL;
 #endif
@@ -257,7 +257,7 @@ int MAIN(int argc, char **argv)
 		else if (strcmp(*argv,"-config") == 0)
 			{	
 			if (--argc < 1) goto bad;
-			template= *(++argv);
+			configuration= *(++argv);
 			}
 		else if (strcmp(*argv,"-keyform") == 0)
 			{
@@ -468,17 +468,17 @@ bad:
 	i=NCONF_load(config, p, &errline);
 #endif
 
-	if (template != NULL)
+	if (configuration != NULL)
 		{
 		long errline = -1;
 
 		if( verbose )
-			BIO_printf(bio_err,"Using configuration from %s\n",template);
+			BIO_printf(bio_err,"Using configuration from %s\n",configuration);
 		req_conf=NCONF_new(NULL);
-		i=NCONF_load(req_conf,template,&errline);
+		i=NCONF_load(req_conf,configuration,&errline);
 		if (i == 0)
 			{
-			BIO_printf(bio_err,"error on line %ld of %s\n",errline,template);
+			BIO_printf(bio_err,"error on line %ld of %s\n",errline,configuration);
 			goto end;
 			}
 		}

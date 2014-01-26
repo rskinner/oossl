@@ -143,6 +143,10 @@
 #endif
 #include "ssl_locl.h"
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 static void SSL_SESSION_list_remove(SSL_CTX *ctx, SSL_SESSION *s);
 static void SSL_SESSION_list_add(SSL_CTX *ctx,SSL_SESSION *s);
 static int remove_session_lock(SSL_CTX *ctx, SSL_SESSION *c, int lck);
@@ -1136,3 +1140,8 @@ void SSL_CTX_set_cookie_verify_cb(SSL_CTX *ctx,
 	}
 
 IMPLEMENT_PEM_rw(SSL_SESSION, SSL_SESSION, PEM_STRING_SSL_SESSION, SSL_SESSION)
+
+#ifdef __cplusplus
+}
+#endif
+

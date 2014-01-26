@@ -87,7 +87,7 @@ int EVP_SignFinal(EVP_MD_CTX *ctx, unsigned char *sigret, unsigned int *siglen,
 	if (ctx->flags & EVP_MD_CTX_FLAG_FINALISE)
 		{
 		if (!EVP_DigestFinal_ex(ctx, m, &m_len))
-			goto err;
+            return 0;
 		}
 	else
 		{
@@ -103,24 +103,21 @@ int EVP_SignFinal(EVP_MD_CTX *ctx, unsigned char *sigret, unsigned int *siglen,
 		}
 
 	if (ctx->digest->flags & EVP_MD_FLAG_PKEY_METHOD_SIGNATURE)
-		{
-		size_t sltmp = (size_t)EVP_PKEY_size(pkey);
-		i = 0;
-		pkctx = EVP_PKEY_CTX_new(pkey, NULL);
-		if (!pkctx)
-			goto err;
-		if (EVP_PKEY_sign_init(pkctx) <= 0)
-			goto err;
-		if (EVP_PKEY_CTX_set_signature_md(pkctx, ctx->digest) <= 0)
-			goto err;
-		if (EVP_PKEY_sign(pkctx, sigret, &sltmp, m, m_len) <= 0)
-			goto err;
-		*siglen = sltmp;
-		i = 1;
-		err:
-		EVP_PKEY_CTX_free(pkctx);
-		return i;
-		}
+    {
+        size_t sltmp = (size_t)EVP_PKEY_size(pkey);
+        i = 0;
+        pkctx = EVP_PKEY_CTX_new(pkey, NULL);
+        if (pkctx && 
+                (EVP_PKEY_sign_init(pkctx) > 0) && 
+                (EVP_PKEY_CTX_set_signature_md(pkctx, ctx->digest) > 0) && 
+                (EVP_PKEY_sign(pkctx, sigret, &sltmp, m, m_len) > 0))
+        {
+            *siglen = sltmp;
+            i = 1;
+        }
+        EVP_PKEY_CTX_free(pkctx);
+        return i;
+    }
 
 	for (i=0; i<4; i++)
 		{

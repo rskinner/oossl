@@ -117,6 +117,10 @@
 #include "cryptlib.h"
 #include <openssl/safestack.h>
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #if defined(OPENSSL_SYS_WIN32) || defined(OPENSSL_SYS_WIN16)
 static double SSLeay_MSVC5_hack=0.0; /* and for VC1.5 */
 #endif
@@ -410,3 +414,8 @@ int CRYPTO_memcmp(const void *in_a, const void *in_b, size_t len)
 
 	return x;
 	}
+
+#ifdef __cplusplus
+}
+#endif
+

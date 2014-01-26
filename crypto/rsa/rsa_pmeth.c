@@ -742,7 +742,7 @@ static int pkey_rsa_keygen(EVP_PKEY_CTX *ctx, EVP_PKEY *pkey)
 	return ret;
 	}
 
-const EVP_PKEY_METHOD rsa_pkey_meth = 
+extern const EVP_PKEY_METHOD rsa_pkey_meth = 
 	{
 	EVP_PKEY_RSA,
 	EVP_PKEY_FLAG_AUTOARGLEN,

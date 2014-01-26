@@ -119,6 +119,10 @@
 #include <openssl/fips.h>
 #endif
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 static const SSL_METHOD *ssl23_get_server_method(int ver);
 int ssl23_get_client_hello(SSL *s);
 static const SSL_METHOD *ssl23_get_server_method(int ver)
@@ -643,3 +647,8 @@ err:
 	if (buf != buf_space) OPENSSL_free(buf);
 	return(-1);
 	}
+
+#ifdef __cplusplus
+}
+#endif
+

@@ -117,6 +117,10 @@
 #include <openssl/objects.h>
 #include <openssl/evp.h>
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 static const SSL_METHOD *ssl2_get_server_method(int ver);
 static int get_client_master_key(SSL *s);
 static int get_client_hello(SSL *s);
@@ -1139,6 +1143,11 @@ static int ssl_rsa_private_decrypt(CERT *c, int len, unsigned char *from,
 		SSLerr(SSL_F_SSL_RSA_PRIVATE_DECRYPT,ERR_R_RSA_LIB);
 	return(i);
 	}
+
+#ifdef __cplusplus
+}
+#endif
+
 #else /* !OPENSSL_NO_SSL2 */
 
 # if PEDANTIC

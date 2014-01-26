@@ -128,6 +128,10 @@
 #include <openssl/dh.h>
 #endif
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 static const SSL_METHOD *dtls1_get_client_method(int ver);
 static int dtls1_get_hello_verify(SSL *s);
 
@@ -850,4 +854,8 @@ f_err:
 	ssl3_send_alert(s, SSL3_AL_FATAL, al);
 	return -1;
 	}
+
+#ifdef __cplusplus
+}
+#endif
 

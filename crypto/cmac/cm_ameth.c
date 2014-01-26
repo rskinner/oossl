@@ -73,7 +73,7 @@ static void cmac_key_free(EVP_PKEY *pkey)
 		CMAC_CTX_free(cmctx);
 	}
 
-const EVP_PKEY_ASN1_METHOD cmac_asn1_meth = 
+extern const EVP_PKEY_ASN1_METHOD cmac_asn1_meth = 
 	{
 	EVP_PKEY_CMAC,
 	EVP_PKEY_CMAC,

@@ -86,6 +86,10 @@
 #include <string.h>
 #include <stdlib.h>
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 /* 32-bit rotations */
 #if !defined(PEDANTIC) && !defined(OPENSSL_NO_ASM) && !defined(OPENSSL_NO_INLINE_ASM)
 # if defined(_MSC_VER) && (defined(_M_IX86) || defined(_M_AMD64) || defined(_M_X64))
@@ -580,3 +584,8 @@ void Camellia_DecryptBlock(int keyBitLength, const u8 plaintext[],
 	Camellia_DecryptBlock_Rounds(keyBitLength==128?3:4,
 			plaintext,keyTable,ciphertext);
 	}
+
+#ifdef __cplusplus
+}
+#endif
+

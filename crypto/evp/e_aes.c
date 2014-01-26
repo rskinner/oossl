@@ -61,6 +61,10 @@
 #include "modes_lcl.h"
 #include <openssl/rand.h>
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 typedef struct
 	{
 	union { double align; AES_KEY ks; } ks;
@@ -1987,4 +1991,8 @@ const EVP_CIPHER *EVP_aes_256_wrap(void)
 	return &aes_256_wrap;
 	}
 
+#endif
+
+#ifdef __cplusplus
+}
 #endif

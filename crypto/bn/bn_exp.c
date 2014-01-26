@@ -128,6 +128,10 @@
 # include <alloca.h>
 #endif
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #undef RSAZ_ENABLED
 #if defined(OPENSSL_BN_ASM_MONT) && \
 	(defined(__x86_64) || defined(__x86_64__) || \
@@ -1366,3 +1370,8 @@ err:
 	bn_check_top(r);
 	return(ret);
 	}
+
+#ifdef __cplusplus
+}
+#endif
+

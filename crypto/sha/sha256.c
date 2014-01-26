@@ -14,6 +14,10 @@
 #include <openssl/sha.h>
 #include <openssl/opensslv.h>
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 __fips_constseg
 const char SHA256_version[]="SHA-256" OPENSSL_VERSION_PTEXT;
 
@@ -280,5 +284,9 @@ static void sha256_block_data_order (SHA256_CTX *ctx, const void *in, size_t num
 
 #endif
 #endif /* SHA256_ASM */
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif /* OPENSSL_NO_SHA256 */

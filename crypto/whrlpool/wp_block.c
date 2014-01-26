@@ -38,6 +38,10 @@
 #include "wp_locl.h"
 #include <string.h>
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 typedef unsigned char		u8;
 #if (defined(_WIN32) || defined(_WIN64)) && !defined(__MINGW32)
 typedef unsigned __int64	u64;
@@ -653,3 +657,7 @@ void whirlpool_block(WHIRLPOOL_CTX *ctx,const void *inp,size_t n)
 							p += 64;
 							} while(--n);
 	}
+
+#ifdef __cplusplus
+}
+#endif

@@ -96,6 +96,10 @@
 #include "cryptlib.h"
 #include "bn_lcl.h"
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #ifndef OPENSSL_NO_EC2M
 
 /* Maximum number of iterations before BN_GF2m_mod_solve_quad_arr should fail. */
@@ -1114,3 +1118,8 @@ int BN_GF2m_arr2poly(const int p[], BIGNUM *a)
 	}
 
 #endif
+
+#ifdef __cplusplus
+}
+#endif
+

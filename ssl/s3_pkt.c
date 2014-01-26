@@ -117,6 +117,10 @@
 #include <openssl/buffer.h>
 #include <openssl/rand.h>
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #ifndef  EVP_CIPH_FLAG_TLS1_1_MULTIBLOCK
 # define EVP_CIPH_FLAG_TLS1_1_MULTIBLOCK 0
 #endif
@@ -1631,3 +1635,8 @@ int ssl3_dispatch_alert(SSL *s)
 		}
 	return(i);
 	}
+
+#ifdef __cplusplus
+}
+#endif
+

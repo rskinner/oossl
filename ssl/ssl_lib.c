@@ -160,6 +160,10 @@
 #include <openssl/engine.h>
 #endif
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 const char *SSL_version_str=OPENSSL_VERSION_TEXT;
 
 SSL3_ENC_METHOD ssl3_undef_enc_method={
@@ -1954,8 +1958,8 @@ static int ssl_session_cmp(const SSL_SESSION *a,const SSL_SESSION *b)
  * SSL_SESSION_hash and SSL_SESSION_cmp for void* types and casting each
  * variable. The reason is that the functions aren't static, they're exposed via
  * ssl.h. */
-static IMPLEMENT_LHASH_HASH_FN(ssl_session, SSL_SESSION)
-static IMPLEMENT_LHASH_COMP_FN(ssl_session, SSL_SESSION)
+extern IMPLEMENT_LHASH_HASH_FN(ssl_session, SSL_SESSION)
+extern IMPLEMENT_LHASH_COMP_FN(ssl_session, SSL_SESSION)
 
 SSL_CTX *SSL_CTX_new(const SSL_METHOD *meth)
 	{
@@ -3622,3 +3626,8 @@ IMPLEMENT_STACK_OF(SSL_CIPHER)
 IMPLEMENT_STACK_OF(SSL_COMP)
 IMPLEMENT_OBJ_BSEARCH_GLOBAL_CMP_FN(SSL_CIPHER, SSL_CIPHER,
 				    ssl_cipher_id);
+
+#ifdef __cplusplus
+}
+#endif
+

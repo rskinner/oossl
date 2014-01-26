@@ -112,6 +112,10 @@
 #ifndef HEADER_RAND_LCL_H
 #define HEADER_RAND_LCL_H
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #define ENTROPY_NEEDED 32  /* require 256 bits = 32 bytes of randomness */
 
 
@@ -156,4 +160,10 @@
 
 void rand_hw_xor(unsigned char *buf, size_t num);
 
+#ifdef __cplusplus
+}
 #endif
+
+#endif
+
+

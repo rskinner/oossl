@@ -64,6 +64,10 @@
 #include <openssl/x509.h>
 #include <openssl/pem.h>
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 static int ssl_set_cert(CERT *c, X509 *x509);
 static int ssl_set_pkey(CERT *c, EVP_PKEY *pkey);
 int SSL_use_certificate(SSL *ssl, X509 *x)
@@ -1059,3 +1063,8 @@ end:
 	}
 #endif /* OPENSSL_NO_STDIO */
 #endif /* OPENSSL_NO_TLSEXT */
+
+#ifdef __cplusplus
+}
+#endif
+

@@ -140,6 +140,10 @@
 #include <openssl/fips.h>
 #endif
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #ifdef BN_DEBUG
 # define PREDICT
 #endif
@@ -741,4 +745,8 @@ void rand_hw_xor(unsigned char *buf, size_t num)
 	return;
 	}
 
+#endif
+
+#ifdef __cplusplus
+}
 #endif

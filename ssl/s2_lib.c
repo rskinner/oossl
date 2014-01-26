@@ -116,7 +116,7 @@
 #include <openssl/evp.h>
 #include <openssl/md5.h>
 
-const char ssl2_version_str[]="SSLv2" OPENSSL_VERSION_PTEXT;
+extern const char ssl2_version_str[]="SSLv2" OPENSSL_VERSION_PTEXT;
 
 #define SSL2_NUM_CIPHERS (sizeof(ssl2_ciphers)/sizeof(SSL_CIPHER))
 

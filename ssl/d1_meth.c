@@ -61,6 +61,10 @@
 #include <openssl/objects.h>
 #include "ssl_locl.h"
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 static const SSL_METHOD *dtls1_get_method(int ver);
 static const SSL_METHOD *dtls1_get_method(int ver)
 	{
@@ -92,4 +96,8 @@ IMPLEMENT_dtls1_meth_func(DTLS_ANY_VERSION,
 			dtls1_connect,
 			dtls1_get_method,
 			DTLSv1_2_enc_data)
+
+#ifdef __cplusplus
+}
+#endif
 

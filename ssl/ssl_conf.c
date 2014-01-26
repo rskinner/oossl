@@ -66,6 +66,10 @@
 #include <openssl/dh.h>
 #endif
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 /* structure holding name tables. This is used for pemitted elements in
  * lists such as TLSv1 and single command line switches such as no_tls1
  */
@@ -453,7 +457,7 @@ typedef struct
 #define SSL_CONF_CMD_STRING(name, cmdopt) \
 	SSL_CONF_CMD(name, cmdopt, SSL_CONF_TYPE_STRING)
 
-static const ssl_conf_cmd_tbl ssl_conf_cmds[] = {
+extern const ssl_conf_cmd_tbl ssl_conf_cmds[] = {
 	SSL_CONF_CMD_STRING(SignatureAlgorithms, "sigalgs"),
 	SSL_CONF_CMD_STRING(ClientSignatureAlgorithms, "client_sigalgs"),
 	SSL_CONF_CMD_STRING(Curves, "curves"),
@@ -711,3 +715,8 @@ void SSL_CONF_CTX_set_ssl_ctx(SSL_CONF_CTX *cctx, SSL_CTX *ctx)
 		cctx->pcert_flags = NULL;
 		}
 	}
+
+#ifdef __cplusplus
+}
+#endif
+

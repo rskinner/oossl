@@ -61,6 +61,10 @@
 #include <stdio.h>
 #include <openssl/objects.h>
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 static const SSL_METHOD *ssl2_get_method(int ver);
 static const SSL_METHOD *ssl2_get_method(int ver)
 	{
@@ -74,6 +78,10 @@ IMPLEMENT_ssl2_meth_func(SSLv2_method,
 			 ssl2_accept,
 			 ssl2_connect,
 			 ssl2_get_method)
+
+#ifdef __cplusplus
+}
+#endif
 
 #else /* !OPENSSL_NO_SSL2 */
 

@@ -640,7 +640,7 @@ static int ec_pkey_ctrl(EVP_PKEY *pkey, int op, long arg1, void *arg2)
 
 	}
 
-const EVP_PKEY_ASN1_METHOD eckey_asn1_meth = 
+extern const EVP_PKEY_ASN1_METHOD eckey_asn1_meth = 
 	{
 	EVP_PKEY_EC,
 	EVP_PKEY_EC,

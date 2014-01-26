@@ -966,7 +966,7 @@ static int rsa_cms_encrypt(CMS_RecipientInfo *ri)
 	return rv;
 	}
 
-const EVP_PKEY_ASN1_METHOD rsa_asn1_meths[] = 
+extern const EVP_PKEY_ASN1_METHOD rsa_asn1_meths[] = 
 	{
 		{
 		EVP_PKEY_RSA,

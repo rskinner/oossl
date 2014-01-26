@@ -122,6 +122,10 @@
 #include <openssl/pqueue.h>
 #include <openssl/rand.h>
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 /* mod 128 saturating subtract of two 64-bit values in big-endian order */
 static int satsub64be(const unsigned char *v1,const unsigned char *v2)
 {	int ret,sat,brw,i;
@@ -1915,3 +1919,7 @@ dtls1_reset_seq_numbers(SSL *s, int rw)
 
 	memset(seq, 0x00, seq_bytes);
 	}
+
+#ifdef __cplusplus
+}
+#endif

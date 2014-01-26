@@ -126,6 +126,10 @@
 #include <openssl/dh.h>
 #endif
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 static const SSL_METHOD *dtls1_get_server_method(int ver);
 static int dtls1_send_hello_verify_request(SSL *s);
 
@@ -933,3 +937,8 @@ int dtls1_send_hello_verify_request(SSL *s)
 	/* s->state = DTLS1_ST_SW_HELLO_VERIFY_REQUEST_B */
 	return(dtls1_do_write(s,SSL3_RT_HANDSHAKE));
 	}
+
+#ifdef __cplusplus
+}
+#endif
+

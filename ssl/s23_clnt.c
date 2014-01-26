@@ -116,6 +116,10 @@
 #include <openssl/objects.h>
 #include <openssl/evp.h>
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 static const SSL_METHOD *ssl23_get_client_method(int ver);
 static int ssl23_client_hello(SSL *s);
 static int ssl23_get_server_hello(SSL *s);
@@ -813,3 +817,8 @@ static int ssl23_get_server_hello(SSL *s)
 err:
 	return(-1);
 	}
+
+#ifdef __cplusplus
+}
+#endif
+

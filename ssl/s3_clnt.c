@@ -167,6 +167,10 @@
 #include <openssl/engine.h>
 #endif
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 static const SSL_METHOD *ssl3_get_client_method(int ver);
 static int ca_dn_cmp(const X509_NAME * const *a,const X509_NAME * const *b);
 
@@ -3753,3 +3757,8 @@ f_err:
 	return -1;
 	}
 #endif
+
+#ifdef __cplusplus
+}
+#endif
+

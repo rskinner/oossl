@@ -58,6 +58,10 @@
 #include <openssl/md5.h>
 #include <openssl/sha.h>
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 /* MAX_HASH_BIT_COUNT_BYTES is the maximum number of bytes in the hash's length
  * field. (SHA-384/512 have 128-bit length.) */
 #define MAX_HASH_BIT_COUNT_BYTES 16
@@ -786,3 +790,8 @@ void tls_fips_digest_extra(
 				(blocks_orig - blocks_data + 1) * block_size);
 	}
 #endif
+
+#ifdef __cplusplus
+}
+#endif
+

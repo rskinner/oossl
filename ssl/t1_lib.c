@@ -117,7 +117,11 @@
 #include <openssl/rand.h>
 #include "ssl_locl.h"
 
-const char tls1_version_str[]="TLSv1" OPENSSL_VERSION_PTEXT;
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+extern const char tls1_version_str[]="TLSv1" OPENSSL_VERSION_PTEXT;
 
 #ifndef OPENSSL_NO_TLSEXT
 static int tls_decrypt_ticket(SSL *s, const unsigned char *tick, int ticklen,
@@ -218,7 +222,7 @@ void tls1_clear(SSL *s)
 
 #ifndef OPENSSL_NO_EC
 
-static int nid_list[] =
+extern int nid_list[] =
 	{
 		NID_sect163k1, /* sect163k1 (1) */
 		NID_sect163r1, /* sect163r1 (2) */
@@ -251,14 +255,14 @@ static int nid_list[] =
 	};
 
 
-static const unsigned char ecformats_default[] = 
+extern const unsigned char ecformats_default[] = 
 	{
 	TLSEXT_ECPOINTFORMAT_uncompressed,
 	TLSEXT_ECPOINTFORMAT_ansiX962_compressed_prime,
 	TLSEXT_ECPOINTFORMAT_ansiX962_compressed_char2
 	};
 
-static const unsigned char eccurves_default[] =
+extern const unsigned char eccurves_default[] =
 	{
 		0,14, /* sect571r1 (14) */ 
 		0,13, /* sect571k1 (13) */ 
@@ -290,7 +294,7 @@ static const unsigned char eccurves_default[] =
 		0,17, /* secp160r2 (17) */ 
 	};
 
-static const unsigned char suiteb_curves[] =
+extern const unsigned char suiteb_curves[] =
 	{
 		0, TLSEXT_curve_P_256,
 		0, TLSEXT_curve_P_384
@@ -864,7 +868,7 @@ static int tls1_check_cert_param(SSL *s, X509 *x, int set_ee_md)
 		tlsext_sigalg_dsa(md) \
 		tlsext_sigalg_ecdsa(md)
 
-static unsigned char tls12_sigalgs[] = {
+extern unsigned char tls12_sigalgs[] = {
 #ifndef OPENSSL_NO_SHA512
 	tlsext_sigalg(TLSEXT_hash_sha512)
 	tlsext_sigalg(TLSEXT_hash_sha384)
@@ -878,7 +882,7 @@ static unsigned char tls12_sigalgs[] = {
 #endif
 };
 #ifndef OPENSSL_NO_ECDSA
-static unsigned char suiteb_sigalgs[] = {
+extern unsigned char suiteb_sigalgs[] = {
 	tlsext_sigalg_ecdsa(TLSEXT_hash_sha256)
 	tlsext_sigalg_ecdsa(TLSEXT_hash_sha384)
 };
@@ -3493,7 +3497,7 @@ typedef struct
 	int id;
 	} tls12_lookup;
 
-static tls12_lookup tls12_md[] = {
+extern tls12_lookup tls12_md[] = {
 	{NID_md5, TLSEXT_hash_md5},
 	{NID_sha1, TLSEXT_hash_sha1},
 	{NID_sha224, TLSEXT_hash_sha224},
@@ -3502,7 +3506,7 @@ static tls12_lookup tls12_md[] = {
 	{NID_sha512, TLSEXT_hash_sha512}
 };
 
-static tls12_lookup tls12_sig[] = {
+extern tls12_lookup tls12_sig[] = {
 	{EVP_PKEY_RSA, TLSEXT_signature_rsa},
 	{EVP_PKEY_DSA, TLSEXT_signature_dsa},
 	{EVP_PKEY_EC, TLSEXT_signature_ecdsa}
@@ -4472,3 +4476,8 @@ int SSL_check_chain(SSL *s, X509 *x, EVP_PKEY *pk, STACK_OF(X509) *chain)
 	}
 
 #endif
+
+#ifdef __cplusplus
+}
+#endif
+

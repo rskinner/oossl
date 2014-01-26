@@ -76,6 +76,9 @@
 # endif
 #endif
 
+#ifdef __cplusplus
+extern "C" 
+#endif
 void ripemd160_block_data_order (RIPEMD160_CTX *c, const void *p,size_t num);
 
 #define DATA_ORDER_IS_LITTLE_ENDIAN
