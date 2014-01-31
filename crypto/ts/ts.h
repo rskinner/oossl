@@ -86,10 +86,6 @@
 #include <openssl/dh.h>
 #endif
 
-#ifdef  __cplusplus
-extern "C" {
-#endif
-
 #ifdef WIN32
 /* Under Win32 this is defined in wincrypt.h */
 #undef X509_NAME
@@ -97,6 +93,10 @@ extern "C" {
 
 #include <openssl/x509.h>
 #include <openssl/x509v3.h>
+
+#ifdef  __cplusplus
+extern "C" {
+#endif
 
 /*
 MessageImprint ::= SEQUENCE  {
