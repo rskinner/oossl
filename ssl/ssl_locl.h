@@ -162,7 +162,7 @@
 #include <openssl/dsa.h>
 #endif
 #include <openssl/err.h>
-#include <openssl/ssl.h>
+#include "ssl.hh"
 #include <openssl/symhacks.h>
 
 #ifdef __cplusplus

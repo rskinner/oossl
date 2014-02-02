@@ -128,7 +128,7 @@ int LIB$INIT_TIMER(), LIB$SHOW_TIMER();
 
 #include <openssl/buffer.h>
 #include <openssl/x509.h>
-#include <openssl/ssl.h>
+#include "ssl.hh"
 #include <openssl/err.h>
 
 int MS_CALLBACK verify_callback(int ok, X509 *xs, X509 *xi, int depth,

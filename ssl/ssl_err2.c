@@ -58,7 +58,7 @@
 
 #include <stdio.h>
 #include <openssl/err.h>
-#include <openssl/ssl.h>
+#include "ssl.hh"
 
 void SSL_load_error_strings(void)
 	{

@@ -72,7 +72,7 @@
 
 #define KRB5_PRIVATE	1
 
-#include <openssl/ssl.h>
+#include "ssl.hh"
 #include <openssl/evp.h>
 #include <openssl/objects.h>
 #include <openssl/krb5_asn.h>

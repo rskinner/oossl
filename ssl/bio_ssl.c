@@ -63,7 +63,7 @@
 #include <openssl/crypto.h>
 #include <openssl/bio.h>
 #include <openssl/err.h>
-#include <openssl/ssl.h>
+#include "ssl.hh"
 
 #ifdef __cplusplus
 extern "C" {
