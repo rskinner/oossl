@@ -100,39 +100,69 @@ typedef void (*LHASH_DOALL_ARG_FN_TYPE)(void *, void *);
 /* First: "hash" functions */
 #define DECLARE_LHASH_HASH_FN(name, o_type) \
 	unsigned long name##_LHASH_HASH(const void *);
+#ifdef __cplusplus
+#define IMPLEMENT_LHASH_HASH_FN(name, o_type) \
+	unsigned long name##_LHASH_HASH(const void *arg) { \
+		const o_type *a = static_cast<o_type const*>(arg); \
+		return name##_hash(a); }
+#else
 #define IMPLEMENT_LHASH_HASH_FN(name, o_type) \
 	unsigned long name##_LHASH_HASH(const void *arg) { \
 		const o_type *a = arg; \
 		return name##_hash(a); }
+#endif
 #define LHASH_HASH_FN(name) name##_LHASH_HASH
 
 /* Second: "compare" functions */
 #define DECLARE_LHASH_COMP_FN(name, o_type) \
 	int name##_LHASH_COMP(const void *, const void *);
+#ifdef __cplusplus
+#define IMPLEMENT_LHASH_COMP_FN(name, o_type) \
+	int name##_LHASH_COMP(const void *arg1, const void *arg2) { \
+		const o_type *a = static_cast<o_type const*>(arg1);		    \
+		const o_type *b = static_cast<o_type const*>(arg2); \
+		return name##_cmp(a,b); }
+#else
 #define IMPLEMENT_LHASH_COMP_FN(name, o_type) \
 	int name##_LHASH_COMP(const void *arg1, const void *arg2) { \
 		const o_type *a = arg1;		    \
 		const o_type *b = arg2; \
 		return name##_cmp(a,b); }
+#endif
 #define LHASH_COMP_FN(name) name##_LHASH_COMP
 
 /* Third: "doall" functions */
 #define DECLARE_LHASH_DOALL_FN(name, o_type) \
 	void name##_LHASH_DOALL(void *);
+#ifdef __cplusplus
+#define IMPLEMENT_LHASH_DOALL_FN(name, o_type) \
+	void name##_LHASH_DOALL(void *arg) { \
+		o_type *a = static_cast<o_type*>(arg); \
+		name##_doall(a); }
+#else
 #define IMPLEMENT_LHASH_DOALL_FN(name, o_type) \
 	void name##_LHASH_DOALL(void *arg) { \
 		o_type *a = arg; \
 		name##_doall(a); }
+#endif
 #define LHASH_DOALL_FN(name) name##_LHASH_DOALL
 
 /* Fourth: "doall_arg" functions */
 #define DECLARE_LHASH_DOALL_ARG_FN(name, o_type, a_type) \
 	void name##_LHASH_DOALL_ARG(void *, void *);
+#ifdef __cplusplus
+#define IMPLEMENT_LHASH_DOALL_ARG_FN(name, o_type, a_type) \
+void name##_LHASH_DOALL_ARG(void *arg1, void *arg2) { \
+    o_type *a = static_cast<o_type*>(arg1); \
+    a_type *b = static_cast<a_type*>(arg2); \
+    name##_doall_arg(a, b); }
+#else
 #define IMPLEMENT_LHASH_DOALL_ARG_FN(name, o_type, a_type) \
 	void name##_LHASH_DOALL_ARG(void *arg1, void *arg2) { \
 		o_type *a = arg1; \
 		a_type *b = arg2; \
 		name##_doall_arg(a, b); }
+#endif
 #define LHASH_DOALL_ARG_FN(name) name##_LHASH_DOALL_ARG
 
 typedef struct lhash_st
