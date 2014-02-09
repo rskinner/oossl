@@ -527,7 +527,7 @@ GENERAL_NAME *v2i_GENERAL_NAME_ex(GENERAL_NAME *out,
 	{
 	int type;
 
-	char *name, *value;
+	char const *name, *value;
 
 	name = cnf->name;
 	value = cnf->value;

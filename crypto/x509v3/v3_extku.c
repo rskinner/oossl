@@ -118,7 +118,7 @@ static void *v2i_EXTENDED_KEY_USAGE(const X509V3_EXT_METHOD *method,
 				    X509V3_CTX *ctx, STACK_OF(CONF_VALUE) *nval)
 {
 	EXTENDED_KEY_USAGE *extku;
-	char *extval;
+	char const *extval;
 	ASN1_OBJECT *objtmp;
 	CONF_VALUE *val;
 	int i;

@@ -121,7 +121,7 @@ static ASN1_TYPE *asn1_multi(int utype, const char *section, X509V3_CTX *cnf);
 static ASN1_TYPE *asn1_str2type(const char *str, int format, int utype);
 static int asn1_str2tag(const char *tagstr, int len);
 
-ASN1_TYPE *ASN1_generate_nconf(char *str, CONF *nconf)
+ASN1_TYPE *ASN1_generate_nconf(char const *str, CONF *nconf)
 	{
 	X509V3_CTX cnf;
 
@@ -132,7 +132,7 @@ ASN1_TYPE *ASN1_generate_nconf(char *str, CONF *nconf)
 	return ASN1_generate_v3(str, &cnf);
 	}
 
-ASN1_TYPE *ASN1_generate_v3(char *str, X509V3_CTX *cnf)
+ASN1_TYPE *ASN1_generate_v3(char const *str, X509V3_CTX *cnf)
 	{
 	ASN1_TYPE *ret;
 	tag_exp_arg asn1_tags;

@@ -149,7 +149,7 @@ static SXNET * sxnet_v2i(X509V3_EXT_METHOD *method, X509V3_CTX *ctx,
 
 /* Add an id given the zone as an ASCII number */
 
-int SXNET_add_id_asc(SXNET **psx, char *zone, char *user,
+int SXNET_add_id_asc(SXNET **psx, char const *zone, char const *user,
 	     int userlen)
 {
 	ASN1_INTEGER *izone = NULL;

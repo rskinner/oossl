@@ -1100,8 +1100,8 @@ int ASN1_item_ndef_i2d(ASN1_VALUE *val, unsigned char **out, const ASN1_ITEM *it
 void ASN1_add_oid_module(void);
 void ASN1_add_stable_module(void);
 
-ASN1_TYPE *ASN1_generate_nconf(char *str, CONF *nconf);
-ASN1_TYPE *ASN1_generate_v3(char *str, X509V3_CTX *cnf);
+ASN1_TYPE *ASN1_generate_nconf(char const *str, CONF *nconf);
+ASN1_TYPE *ASN1_generate_v3(char const *str, X509V3_CTX *cnf);
 int ASN1_str2mask(const char *str, unsigned long *pmask);
 
 /* ASN1 Print flags */

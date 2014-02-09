@@ -108,7 +108,7 @@ int main(int argc, char *argv[])
 	int i,err=0;
 	char **P,**R;
 	static unsigned char buf[1000];
-	char *p,*r;
+	char const *p,*r;
 	EVP_MD_CTX c;
 	unsigned char md[SHA_DIGEST_LENGTH];
 

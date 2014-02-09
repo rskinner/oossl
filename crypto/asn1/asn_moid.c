@@ -66,7 +66,7 @@
 
 /* Simple ASN1 OID module: add all objects in a given section */
 
-static int do_create(char *value, char *name);
+static int do_create(char const *value, char const *name);
 
 static int oid_module_init(CONF_IMODULE *md, const CONF *cnf)
 	{
@@ -108,11 +108,12 @@ void ASN1_add_oid_module(void)
  */
 
 
-static int do_create(char *value, char *name)
+static int do_create(char const *value, char const *name)
 	{
 	int nid;
 	ASN1_OBJECT *oid;
-	char *ln, *ostr, *p, *lntmp;
+	char const *ln, *ostr, *p; 
+    char *lntmp;
 	p = strrchr(value, ',');
 	if (!p)
 		{

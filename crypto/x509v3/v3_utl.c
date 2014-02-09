@@ -156,7 +156,7 @@ char *i2s_ASN1_INTEGER(X509V3_EXT_METHOD *method, ASN1_INTEGER *a)
 	return strtmp;
 }
 
-ASN1_INTEGER *s2i_ASN1_INTEGER(X509V3_EXT_METHOD *method, char *value)
+ASN1_INTEGER *s2i_ASN1_INTEGER(X509V3_EXT_METHOD *method, char const *value)
 {
 	BIGNUM *bn = NULL;
 	ASN1_INTEGER *aint;
@@ -212,7 +212,7 @@ int X509V3_add_value_int(const char *name, ASN1_INTEGER *aint,
 
 int X509V3_get_value_bool(CONF_VALUE *value, int *asn1_bool)
 {
-	char *btmp;
+	char const *btmp;
 	if(!(btmp = value->value)) goto err;
 	if(!strcmp(btmp, "TRUE") || !strcmp(btmp, "true")
 		 || !strcmp(btmp, "Y") || !strcmp(btmp, "y")
@@ -899,7 +899,8 @@ ASN1_OCTET_STRING *a2i_IPADDRESS_NC(const char *ipasc)
 	{
 	ASN1_OCTET_STRING *ret = NULL;
 	unsigned char ipout[32];
-	char *iptmp = NULL, *p;
+	char const *iptmp = NULL;
+    char *p;
 	int iplen1, iplen2;
 	p = strchr(ipasc,'/');
 	if (!p)
@@ -1131,7 +1132,7 @@ int X509V3_NAME_from_section(X509_NAME *nm, STACK_OF(CONF_VALUE)*dn_sk,
 	{
 	CONF_VALUE *v;
 	int i, mval;
-	char *p, *type;
+	char const *p, *type;
 	if (!nm)
 		return 0;
 

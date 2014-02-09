@@ -1222,7 +1222,7 @@ int X509_TRUST_add(int id, int flags, int (*ck)(X509_TRUST *, X509 *, int),
 					char *name, int arg1, void *arg2);
 void X509_TRUST_cleanup(void);
 int X509_TRUST_get_flags(X509_TRUST *xp);
-char *X509_TRUST_get0_name(X509_TRUST *xp);
+char const *X509_TRUST_get0_name(X509_TRUST *xp);
 int X509_TRUST_get_trust(X509_TRUST *xp);
 
 /* BEGIN ERROR CODES */

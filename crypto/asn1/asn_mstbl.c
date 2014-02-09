@@ -61,7 +61,7 @@
 
 /* Multi string module: add table enstries from a given section */
 
-static int do_tcreate(char *value, char *name);
+static int do_tcreate(char const *value, char const *name);
 
 static int stbl_module_init(CONF_IMODULE *md, const CONF *cnf)
 	{
@@ -103,7 +103,7 @@ void ASN1_add_stable_module(void)
  */
 
 
-static int do_tcreate(char *value, char *name)
+static int do_tcreate(char const *value, char const *name)
 	{
 	char *eptr;
 	int nid, i, rv = 0;

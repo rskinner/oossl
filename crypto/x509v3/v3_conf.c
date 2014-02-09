@@ -78,8 +78,8 @@ static unsigned char *generic_asn1(char *value, X509V3_CTX *ctx, long *ext_len);
 /* CONF *conf:  Config file    */
 /* char *name:  Name    */
 /* char *value:  Value    */
-X509_EXTENSION *X509V3_EXT_nconf(CONF *conf, X509V3_CTX *ctx, char *name,
-				 char *value)
+X509_EXTENSION *X509V3_EXT_nconf(CONF *conf, X509V3_CTX *ctx, char const* name,
+				 char const *value)
 	{
 	int crit;
 	int ext_type;
@@ -471,7 +471,7 @@ void X509V3_set_ctx(X509V3_CTX *ctx, X509 *issuer, X509 *subj, X509_REQ *req,
 /* Old conf compatibility functions */
 
 X509_EXTENSION *X509V3_EXT_conf(LHASH_OF(CONF_VALUE) *conf, X509V3_CTX *ctx,
-				char *name, char *value)
+				char const *name, char const *value)
 	{
 	CONF ctmp;
 	CONF_set_nconf(&ctmp, conf);

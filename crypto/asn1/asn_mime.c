@@ -71,16 +71,16 @@
  */
 
 typedef struct {
-char *param_name;			/* Param name e.g. "micalg" */
-char *param_value;			/* Param value e.g. "sha1" */
+char const *param_name;			/* Param name e.g. "micalg" */
+char const *param_value;			/* Param value e.g. "sha1" */
 } MIME_PARAM;
 
 DECLARE_STACK_OF(MIME_PARAM)
 IMPLEMENT_STACK_OF(MIME_PARAM)
 
 typedef struct {
-char *name;				/* Name of line e.g. "content-type" */
-char *value;				/* Value of line e.g. "text/plain" */
+char const *name;				/* Name of line e.g. "content-type" */
+char const *value;				/* Value of line e.g. "text/plain" */
 STACK_OF(MIME_PARAM) *params;		/* Zero or more parameters */
 } MIME_HEADER;
 
@@ -100,8 +100,8 @@ static int mime_hdr_cmp(const MIME_HEADER * const *a,
 static int mime_param_cmp(const MIME_PARAM * const *a,
 			const MIME_PARAM * const *b);
 static void mime_param_free(MIME_PARAM *param);
-static int mime_bound_check(char *line, int linelen, char *bound, int blen);
-static int multi_split(BIO *bio, char *bound, STACK_OF(BIO) **ret);
+static int mime_bound_check(char const *line, int linelen, char const *bound, int blen);
+static int multi_split(BIO *bio, char const *bound, STACK_OF(BIO) **ret);
 static int strip_eol(char *linebuf, int *plen);
 static MIME_HEADER *mime_hdr_find(STACK_OF(MIME_HEADER) *hdrs, char const *name);
 static MIME_PARAM *mime_param_find(MIME_HEADER *hdr, char const *name);
@@ -605,7 +605,7 @@ int SMIME_text(BIO *in, BIO *out)
  * canonical parts in a STACK of bios
  */
 
-static int multi_split(BIO *bio, char *bound, STACK_OF(BIO) **ret)
+static int multi_split(BIO *bio, char const *bound, STACK_OF(BIO) **ret)
 {
 	char linebuf[MAX_SMLEN];
 	int len, blen;
@@ -918,7 +918,7 @@ static void mime_param_free(MIME_PARAM *param)
  * 1 : part boundary
  * 2 : final boundary
  */
-static int mime_bound_check(char *line, int linelen, char *bound, int blen)
+static int mime_bound_check(char const *line, int linelen, char const *bound, int blen)
 {
 	if(linelen == -1) linelen = strlen(line);
 	if(blen == -1) blen = strlen(bound);
