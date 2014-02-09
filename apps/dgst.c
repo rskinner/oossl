@@ -126,7 +126,7 @@ int MAIN(int argc, char **argv)
 	char *engine=NULL;
 	int engine_impl = 0;
 #endif
-	char *hmac_key=NULL;
+	char const *hmac_key=NULL;
 	char *mac_name=NULL;
 	int non_fips_allow = 0;
 	STACK_OF(OPENSSL_STRING) *sigopts = NULL, *macopts = NULL;

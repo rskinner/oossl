@@ -106,8 +106,8 @@ struct evp_pkey_asn1_method_st
 	int pkey_base_id;
 	unsigned long pkey_flags;
 
-	char *pem_str;
-	char *info;
+	char const *pem_str;
+	char const *info;
 
 	int (*pub_decode)(EVP_PKEY *pk, X509_PUBKEY *pub);
 	int (*pub_encode)(X509_PUBKEY *pub, const EVP_PKEY *pk);

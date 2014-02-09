@@ -96,7 +96,7 @@ int main(int argc, char *argv[])
 	unsigned char md[MDC2_DIGEST_LENGTH];
 	int i;
 	EVP_MD_CTX c;
-	static char *text="Now is the time for all ";
+	static char const *text="Now is the time for all ";
 
 #ifdef CHARSET_EBCDIC
 	ebcdic2ascii(text,text,strlen(text));

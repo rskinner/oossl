@@ -279,7 +279,7 @@ int MAIN(int argc, char **argv)
 	char *outdir=NULL;
 	char *serialfile=NULL;
 	char *crlnumberfile=NULL;
-	char *extensions=NULL;
+	char const *extensions=NULL;
 	char *extfile=NULL;
 	char *subj=NULL;
 	unsigned long chtype = MBSTRING_ASC;
@@ -290,7 +290,7 @@ int MAIN(int argc, char **argv)
 	char *rev_arg = NULL;
 	BIGNUM *serial=NULL;
 	BIGNUM *crlnumber=NULL;
-	char *startdate=NULL;
+	char const *startdate=NULL;
 	char *enddate=NULL;
 	long days=0;
 	int batch=0;

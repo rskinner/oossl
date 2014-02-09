@@ -210,7 +210,7 @@ int MAIN(int argc, char **argv)
 	char buf[256];
 	const EVP_MD *md_alg,*digest=NULL;
 	CONF *extconf = NULL;
-	char *extsect = NULL, *extfile = NULL, *passin = NULL, *passargin = NULL;
+	char const *extsect = NULL, *extfile = NULL, *passin = NULL, *passargin = NULL;
 	int need_rand = 0;
 	int checkend=0,checkoffset=0;
 	unsigned long nmflag = 0, certflag = 0;

@@ -356,7 +356,7 @@ static int c_auth_require_reneg = 0;
 #endif
 
 #ifndef OPENSSL_NO_PSK
-static char *psk_identity="Client_identity";
+static char const *psk_identity="Client_identity";
 char *psk_key=NULL; /* by default PSK is not used */
 
 static unsigned int psk_server_cb(SSL *ssl, const char *identity,

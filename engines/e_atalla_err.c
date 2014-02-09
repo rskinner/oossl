@@ -141,7 +141,7 @@ static void ERR_unload_ATALLA_strings(void)
 		}
 	}
 
-static void ERR_ATALLA_error(int function, int reason, char *file, int line)
+static void ERR_ATALLA_error(int function, int reason, char const*file, int line)
 	{
 	if (ATALLA_lib_error_code == 0)
 		ATALLA_lib_error_code=ERR_get_next_error_library();

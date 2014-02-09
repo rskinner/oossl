@@ -150,7 +150,7 @@ static void ERR_unload_SUREWARE_strings(void)
 		}
 	}
 
-static void ERR_SUREWARE_error(int function, int reason, char *file, int line)
+static void ERR_SUREWARE_error(int function, int reason, char const*file, int line)
 	{
 	if (SUREWARE_lib_error_code == 0)
 		SUREWARE_lib_error_code=ERR_get_next_error_library();

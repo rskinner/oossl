@@ -65,7 +65,7 @@ extern "C" {
  */
 static void ERR_load_CCA4758_strings(void);
 static void ERR_unload_CCA4758_strings(void);
-static void ERR_CCA4758_error(int function, int reason, char *file, int line);
+static void ERR_CCA4758_error(int function, int reason, char const *file, int line);
 #define CCA4758err(f,r) ERR_CCA4758_error((f),(r),__FILE__,__LINE__)
 
 /* Error codes for the CCA4758 functions. */

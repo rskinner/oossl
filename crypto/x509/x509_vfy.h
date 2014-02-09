@@ -167,7 +167,7 @@ typedef struct X509_VERIFY_PARAM_ID_st X509_VERIFY_PARAM_ID;
 
 typedef struct X509_VERIFY_PARAM_st
 	{
-	char *name;
+	char const *name;
 	time_t check_time;	/* Time to use */
 	unsigned long inh_flags; /* Inheritance flags */
 	unsigned long flags;	/* Various verify flags */

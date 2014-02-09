@@ -256,7 +256,7 @@ static int authz_tlsext_cb(SSL *s, unsigned short ext_type,
 
 #ifndef OPENSSL_NO_PSK
 /* Default PSK identity and key */
-static char *psk_identity="Client_identity";
+static char const *psk_identity="Client_identity";
 /*char *psk_key=NULL;  by default PSK is not used */
 
 static unsigned int psk_client_cb(SSL *ssl, const char *hint, char *identity,
@@ -626,7 +626,7 @@ int MAIN(int argc, char **argv)
 	fd_set readfds,writefds;
 	short port=PORT;
 	int full_log=1;
-	char *host=SSL_HOST_NAME;
+	char const *host=SSL_HOST_NAME;
 	char *xmpphost = NULL;
 	char *cert_file=NULL,*key_file=NULL,*chain_file=NULL;
 	int cert_format = FORMAT_PEM, key_format = FORMAT_PEM;

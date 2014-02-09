@@ -146,7 +146,7 @@ static void ERR_unload_CSWIFT_strings(void)
 		}
 	}
 
-static void ERR_CSWIFT_error(int function, int reason, char *file, int line)
+static void ERR_CSWIFT_error(int function, int reason, char const *file, int line)
 	{
 	if (CSWIFT_lib_error_code == 0)
 		CSWIFT_lib_error_code=ERR_get_next_error_library();

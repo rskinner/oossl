@@ -187,7 +187,7 @@ static void update_buflen(const BIGNUM *b, size_t *pbuflen)
 
 static int do_rsa_print(BIO *bp, const RSA *x, int off, int priv)
 	{
-	char *str;
+	char const *str;
 	const char *s;
 	unsigned char *m=NULL;
 	int ret=0, mod_len = 0;

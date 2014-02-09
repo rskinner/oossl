@@ -204,7 +204,7 @@ void ERR_unload_GOST_strings(void)
 		}
 	}
 
-void ERR_GOST_error(int function, int reason, char *file, int line)
+void ERR_GOST_error(int function, int reason, char const *file, int line)
 	{
 	if (GOST_lib_error_code == 0)
 		GOST_lib_error_code=ERR_get_next_error_library();

@@ -530,7 +530,7 @@ char *SRP_create_verifier(const char *user, const char *pass, char **salt,
 	BIGNUM *N_bn = NULL, *g_bn = NULL, *s = NULL, *v = NULL;
 	unsigned char tmp[MAX_LEN];
 	unsigned char tmp2[MAX_LEN];
-	char * defgNid = NULL;
+	char const* defgNid = NULL;
 
 	if ((user == NULL)||
 		(pass == NULL)||

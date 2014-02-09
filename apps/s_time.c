@@ -120,7 +120,7 @@ static void s_time_init(void);
  */
 
 /* static char *port=PORT_STR;*/
-static char *host=SSL_CONNECT_NAME;
+static char const *host=SSL_CONNECT_NAME;
 static char *t_cert_file=NULL;
 static char *t_key_file=NULL;
 static char *CApath=NULL;

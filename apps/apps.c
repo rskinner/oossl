@@ -1705,7 +1705,7 @@ static IMPLEMENT_LHASH_COMP_FN(index_name, OPENSSL_CSTRING)
 #undef BSIZE
 #define BSIZE 256
 
-BIGNUM *load_serial(char *serialfile, int create, ASN1_INTEGER **retai)
+BIGNUM *load_serial(char const *serialfile, int create, ASN1_INTEGER **retai)
 	{
 	BIO *in=NULL;
 	BIGNUM *ret=NULL;
@@ -1762,7 +1762,7 @@ BIGNUM *load_serial(char *serialfile, int create, ASN1_INTEGER **retai)
 	return(ret);
 	}
 
-int save_serial(char *serialfile, char *suffix, BIGNUM *serial, ASN1_INTEGER **retai)
+int save_serial(char const *serialfile, char const *suffix, BIGNUM *serial, ASN1_INTEGER **retai)
 	{
 	char buf[1][BSIZE];
 	BIO *out = NULL;
@@ -1824,7 +1824,7 @@ err:
 	return(ret);
 	}
 
-int rotate_serial(char *serialfile, char *new_suffix, char *old_suffix)
+int rotate_serial(char const *serialfile, char const *new_suffix, char const *old_suffix)
 	{
 	char buf[5][BSIZE];
 	int i,j;

@@ -300,9 +300,9 @@ typedef struct ca_db_st
 	TXT_DB *db;
 	} CA_DB;
 
-BIGNUM *load_serial(char *serialfile, int create, ASN1_INTEGER **retai);
-int save_serial(char *serialfile, char *suffix, BIGNUM *serial, ASN1_INTEGER **retai);
-int rotate_serial(char *serialfile, char *new_suffix, char *old_suffix);
+BIGNUM *load_serial(char const *serialfile, int create, ASN1_INTEGER **retai);
+int save_serial(char const *serialfile, char const *suffix, BIGNUM *serial, ASN1_INTEGER **retai);
+int rotate_serial(char const *serialfile, char const *new_suffix, char const *old_suffix);
 int rand_serial(BIGNUM *b, ASN1_INTEGER *ai);
 CA_DB *load_index(char *dbfile, DB_ATTR *dbattr);
 int index_index(CA_DB *db);

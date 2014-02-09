@@ -1632,7 +1632,7 @@ STACK_OF(SSL_CIPHER) *ssl_create_cipher_list(const SSL_METHOD *ssl_method,
 	return(cipherstack);
 	}
 
-char *SSL_CIPHER_description(const SSL_CIPHER *cipher, char *buf, int len)
+char const*SSL_CIPHER_description(const SSL_CIPHER *cipher, char *buf, int len)
 	{
 	int is_export,pkl,kl;
 	const char *ver,*exp_str;
@@ -1819,7 +1819,7 @@ char *SSL_CIPHER_description(const SSL_CIPHER *cipher, char *buf, int len)
 	return(buf);
 	}
 
-char *SSL_CIPHER_get_version(const SSL_CIPHER *c)
+char const*SSL_CIPHER_get_version(const SSL_CIPHER *c)
 	{
 	int i;
 

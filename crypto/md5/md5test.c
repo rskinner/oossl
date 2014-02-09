@@ -72,7 +72,7 @@ int main(int argc, char *argv[])
 #include <openssl/evp.h>
 #include <openssl/md5.h>
 
-static char *test[]={
+static char const *test[]={
 	"",
 	"a",
 	"abc",
@@ -83,7 +83,7 @@ static char *test[]={
 	NULL,
 	};
 
-static char *ret[]={
+static char const *ret[]={
 	"d41d8cd98f00b204e9800998ecf8427e",
 	"0cc175b9c0f1b6a831c399e269772661",
 	"900150983cd24fb0d6963f7d28e17f72",

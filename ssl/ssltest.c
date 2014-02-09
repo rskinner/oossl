@@ -226,7 +226,7 @@ static int MS_CALLBACK app_verify_callback(X509_STORE_CTX *ctx, void *arg);
 #define APP_CALLBACK_STRING "Test Callback Argument"
 struct app_verify_arg
 	{
-	char *string;
+	char const *string;
 	int app_verify;
 	int allow_proxy_certs;
 	char *proxy_auth;
@@ -1067,9 +1067,9 @@ int main(int argc, char *argv[])
 	int server_auth=0,i;
 	struct app_verify_arg app_verify_arg =
 		{ APP_CALLBACK_STRING, 0, 0, NULL, NULL };
-	char *server_cert=TEST_SERVER_CERT;
+	char const *server_cert=TEST_SERVER_CERT;
 	char *server_key=NULL;
-	char *client_cert=TEST_CLIENT_CERT;
+	char const *client_cert=TEST_CLIENT_CERT;
 	char *client_key=NULL;
 #ifndef OPENSSL_NO_ECDH
 	char *named_curve = NULL;

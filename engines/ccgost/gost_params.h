@@ -12,21 +12,21 @@
 #define GOST_PARAMSET_H
 typedef struct R3410 {
 		int nid;
-		char *a;
-		char *p;
-		char *q;
+		char const *a;
+		char const *p;
+		char const *q;
 } R3410_params;
 
 extern R3410_params R3410_paramset[];
 
 typedef struct R3410_2001 {
 		int nid;
-		char *a;
-		char *b;
-		char *p;
-		char *q;
-		char *x;
-		char *y;
+		char const *a;
+		char const *b;
+		char const *p;
+		char const *q;
+		char const *x;
+		char const *y;
 } R3410_2001_params;
 
 extern R3410_2001_params R3410_2001_paramset[];

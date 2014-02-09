@@ -79,7 +79,7 @@ int main(int argc, char *argv[])
 #include <openssl/ebcdic.h>
 #endif
 
-static char *bf_key[2]={
+static char const *bf_key[2]={
 	"abcdefghijklmnopqrstuvwxyz",
 	"Who is John Galt?"
 	};

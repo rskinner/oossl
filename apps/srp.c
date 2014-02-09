@@ -81,7 +81,7 @@
 #define ENV_DATABASE		"srpvfile"
 #define ENV_DEFAULT_SRP		"default_srp"
 
-static char *srp_usage[]={
+static char const *srp_usage[]={
 "usage: srp [args] [user] \n",
 "\n",
 " -verbose        Talk a lot while doing things\n",
@@ -140,7 +140,7 @@ static int get_index(CA_DB *db, char* id, char type)
 	return -1 ; 
 	}
 
-static void print_entry(CA_DB *db, BIO *bio, int indx, int verbose, char *s)
+static void print_entry(CA_DB *db, BIO *bio, int indx, int verbose, char const *s)
 	{
 	if (indx >= 0 && verbose)
 		{
@@ -166,10 +166,10 @@ static void print_user(CA_DB *db, BIO *bio, int userindex, int verbose)
 		char **pp = sk_OPENSSL_PSTRING_value(db->db->data,userindex);
 
 		if (pp[DB_srptype][0] != 'I')
-			{
-			print_entry(db, bio, userindex, verbose, "User entry");
-			print_entry(db, bio, get_index(db, pp[DB_srpgN], 'I'), verbose, "g N entry");
-			}
+        {
+            print_entry(db, bio, userindex, verbose, "User entry");
+            print_entry(db, bio, get_index(db, pp[DB_srpgN], 'I'), verbose, "g N entry");
+        }
 
 		}
 	}

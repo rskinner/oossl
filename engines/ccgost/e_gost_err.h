@@ -65,7 +65,7 @@ extern "C" {
  */
 void ERR_load_GOST_strings(void);
 void ERR_unload_GOST_strings(void);
-void ERR_GOST_error(int function, int reason, char *file, int line);
+void ERR_GOST_error(int function, int reason, char const *file, int line);
 #define GOSTerr(f,r) ERR_GOST_error((f),(r),__FILE__,__LINE__)
 
 /* Error codes for the GOST functions. */

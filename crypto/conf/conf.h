@@ -73,9 +73,9 @@ extern "C" {
 
 typedef struct
 	{
-	char *section;
-	char *name;
-	char *value;
+	char const *section;
+	char const *name;
+	char const *value;
 	} CONF_VALUE;
 
 DECLARE_STACK_OF(CONF_VALUE)

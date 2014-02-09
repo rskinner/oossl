@@ -103,8 +103,8 @@ static void mime_param_free(MIME_PARAM *param);
 static int mime_bound_check(char *line, int linelen, char *bound, int blen);
 static int multi_split(BIO *bio, char *bound, STACK_OF(BIO) **ret);
 static int strip_eol(char *linebuf, int *plen);
-static MIME_HEADER *mime_hdr_find(STACK_OF(MIME_HEADER) *hdrs, char *name);
-static MIME_PARAM *mime_param_find(MIME_HEADER *hdr, char *name);
+static MIME_HEADER *mime_hdr_find(STACK_OF(MIME_HEADER) *hdrs, char const *name);
+static MIME_PARAM *mime_param_find(MIME_HEADER *hdr, char const *name);
 static void mime_hdr_free(MIME_HEADER *hdr);
 
 #define MAX_SMLEN 1024
@@ -878,7 +878,7 @@ static int mime_param_cmp(const MIME_PARAM * const *a,
 
 /* Find a header with a given name (if possible) */
 
-static MIME_HEADER *mime_hdr_find(STACK_OF(MIME_HEADER) *hdrs, char *name)
+static MIME_HEADER *mime_hdr_find(STACK_OF(MIME_HEADER) *hdrs, char const *name)
 {
 	MIME_HEADER htmp;
 	int idx;
@@ -888,7 +888,7 @@ static MIME_HEADER *mime_hdr_find(STACK_OF(MIME_HEADER) *hdrs, char *name)
 	return sk_MIME_HEADER_value(hdrs, idx);
 }
 
-static MIME_PARAM *mime_param_find(MIME_HEADER *hdr, char *name)
+static MIME_PARAM *mime_param_find(MIME_HEADER *hdr, char const *name)
 {
 	MIME_PARAM param;
 	int idx;

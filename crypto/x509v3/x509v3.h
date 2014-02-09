@@ -464,8 +464,8 @@ typedef struct x509_purpose_st {
 	int flags;
 	int (*check_purpose)(const struct x509_purpose_st *,
 				const X509 *, int);
-	char *name;
-	char *sname;
+	char const *name;
+	char const *sname;
 	void *usr_data;
 } X509_PURPOSE;
 
@@ -675,7 +675,7 @@ void X509V3_EXT_val_prn(BIO *out, STACK_OF(CONF_VALUE) *val, int indent,
 int X509V3_EXT_print(BIO *out, X509_EXTENSION *ext, unsigned long flag, int indent);
 int X509V3_EXT_print_fp(FILE *out, X509_EXTENSION *ext, int flag, int indent);
 
-int X509V3_extensions_print(BIO *out, char *title, STACK_OF(X509_EXTENSION) *exts, unsigned long flag, int indent);
+int X509V3_extensions_print(BIO *out, char const*title, STACK_OF(X509_EXTENSION) *exts, unsigned long flag, int indent);
 
 int X509_check_ca(X509 *x);
 int X509_check_purpose(X509 *x, int id, int ca);

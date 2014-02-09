@@ -350,7 +350,7 @@ static void engine_cpy(ENGINE *dest, const ENGINE *src)
 ENGINE *ENGINE_by_id(const char *id)
 	{
 	ENGINE *iterator;
-	char *load_dir = NULL;
+	char const *load_dir = NULL;
 	if(id == NULL)
 		{
 		ENGINEerr(ENGINE_F_ENGINE_BY_ID,

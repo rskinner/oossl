@@ -308,7 +308,7 @@ static void ssl_print_client_cert_types(BIO *bio, SSL *s)
 	for (i = 0; i < cert_type_num; i++)
 		{
 		unsigned char cert_type = p[i];
-		char *cname;
+		char const *cname;
 		switch(cert_type)
 			{
 		case TLS_CT_RSA_SIGN:
@@ -937,7 +937,7 @@ void MS_CALLBACK tlsext_cb(SSL *s, int client_server, int type,
 					void *arg)
 	{
 	BIO *bio = arg;
-	char *extname;
+	char const *extname;
 
 	switch(type)
 		{

@@ -616,7 +616,7 @@ const UI_METHOD *UI_set_method(UI *ui, const UI_METHOD *meth)
 	}
 
 
-UI_METHOD *UI_create_method(char *name)
+UI_METHOD *UI_create_method(char const *name)
 	{
 	UI_METHOD *ui_method = (UI_METHOD *)OPENSSL_malloc(sizeof(UI_METHOD));
 

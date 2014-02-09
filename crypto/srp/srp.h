@@ -107,7 +107,7 @@ typedef struct SRP_VBASE_st
 /*Structure interne pour retenir les couples N et g*/
 typedef struct SRP_gN_st
 	{
-	char *id;
+	char const *id;
 	BIGNUM *g;
 	BIGNUM *N;
 	} SRP_gN;

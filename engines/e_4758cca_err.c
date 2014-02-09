@@ -145,7 +145,7 @@ static void ERR_unload_CCA4758_strings(void)
 		}
 	}
 
-static void ERR_CCA4758_error(int function, int reason, char *file, int line)
+static void ERR_CCA4758_error(int function, int reason, char const *file, int line)
 	{
 	if (CCA4758_lib_error_code == 0)
 		CCA4758_lib_error_code=ERR_get_next_error_library();

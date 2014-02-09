@@ -126,7 +126,7 @@ int MAIN(int argc, char **argv)
 	{
 	ENGINE *e = NULL;
 	char **args;
-	char *host = NULL, *port = NULL, *path = "/";
+	char const *host = NULL, *port = NULL, *path = "/";
 	char *reqin = NULL, *respin = NULL;
 	char *reqout = NULL, *respout = NULL;
 	char *signfile = NULL, *keyfile = NULL;

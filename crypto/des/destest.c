@@ -834,7 +834,7 @@ static char *pt(unsigned char *p)
 	static int bnum=0;
 	char *ret;
 	int i;
-	static char *f="0123456789ABCDEF";
+	static char const *f="0123456789ABCDEF";
 
 	ret= &(bufs[bnum++][0]);
 	bnum%=10;
