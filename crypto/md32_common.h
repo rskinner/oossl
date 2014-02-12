@@ -301,7 +301,7 @@
 
 int HASH_UPDATE (HASH_CTX *c, const void *data_, size_t len)
 	{
-	const unsigned char *data=data_;
+	const unsigned char *data=(unsigned char const*)data_;
 	unsigned char *p;
 	HASH_LONG l;
 	size_t n;
