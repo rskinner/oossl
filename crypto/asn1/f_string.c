@@ -57,7 +57,7 @@
  */
 
 #include <stdio.h>
-#include "cryptlib.h"
+#include "cryptlib.hh"
 #include <openssl/buffer.h>
 #include <openssl/asn1.h>
 
@@ -161,7 +161,7 @@ int a2i_ASN1_STRING(BIO *bp, ASN1_STRING *bs, char *buf, int size)
 				sp=(unsigned char *)OPENSSL_malloc(
 					(unsigned int)num+i*2);
 			else
-				sp=(unsigned char *)OPENSSL_realloc(s,
+				sp=(unsigned char *)OOSSL_realloc(s,
 					(unsigned int)num+i*2);
 			if (sp == NULL)
 				{

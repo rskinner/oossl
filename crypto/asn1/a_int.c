@@ -57,7 +57,7 @@
  */
 
 #include <stdio.h>
-#include "cryptlib.h"
+#include "cryptlib.hh"
 #include <openssl/asn1.h>
 #include <openssl/bn.h>
 
@@ -422,7 +422,7 @@ ASN1_INTEGER *BN_to_ASN1_INTEGER(const BIGNUM *bn, ASN1_INTEGER *ai)
 	len=((j == 0)?0:((j/8)+1));
 	if (ret->length < len+4)
 		{
-		unsigned char *new_data=OPENSSL_realloc(ret->data, len+4);
+		unsigned char *new_data=OOSSL_realloc(ret->data, len+4);
 		if (!new_data)
 			{
 			ASN1err(ASN1_F_BN_TO_ASN1_INTEGER,ERR_R_MALLOC_FAILURE);

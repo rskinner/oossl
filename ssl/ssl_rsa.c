@@ -63,6 +63,7 @@
 #include <openssl/evp.h>
 #include <openssl/x509.h>
 #include <openssl/pem.h>
+#include "cryptlib.hh"
 
 #ifdef __cplusplus
 extern "C" {
@@ -953,7 +954,7 @@ int SSL_CTX_use_serverinfo(SSL_CTX *ctx, const unsigned char *serverinfo,
 		SSLerr(SSL_F_SSL_CTX_USE_SERVERINFO,ERR_R_INTERNAL_ERROR);
 		return 0;
 		}
-	ctx->cert->key->serverinfo = OPENSSL_realloc(ctx->cert->key->serverinfo,
+	ctx->cert->key->serverinfo = OOSSL_realloc(ctx->cert->key->serverinfo,
 						     serverinfo_length);
 	if (ctx->cert->key->serverinfo == NULL)
 		{
@@ -1036,7 +1037,7 @@ int SSL_CTX_use_serverinfo_file(SSL_CTX *ctx, const char *file)
 			goto end;
 			}
 		/* Append the decoded extension to the serverinfo buffer */
-		serverinfo = OPENSSL_realloc(serverinfo, serverinfo_length + extension_length);
+		serverinfo = OOSSL_realloc(serverinfo, serverinfo_length + extension_length);
 		if (serverinfo == NULL)
 			{
 			SSLerr(SSL_F_SSL_CTX_USE_SERVERINFO_FILE, ERR_R_MALLOC_FAILURE);

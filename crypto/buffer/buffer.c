@@ -57,7 +57,7 @@
  */
 
 #include <stdio.h>
-#include "cryptlib.h"
+#include "cryptlib.hh"
 #include <openssl/buffer.h>
 
 /* LIMIT_BEFORE_EXPANSION is the maximum n such that (n+3)/3*4 < 2**31. That
@@ -120,7 +120,7 @@ int BUF_MEM_grow(BUF_MEM *str, size_t len)
 	if (str->data == NULL)
 		ret=OPENSSL_malloc(n);
 	else
-		ret=OPENSSL_realloc(str->data,n);
+		ret=OOSSL_realloc(str->data,n);
 	if (ret == NULL)
 		{
 		BUFerr(BUF_F_BUF_MEM_GROW,ERR_R_MALLOC_FAILURE);

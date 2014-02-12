@@ -66,7 +66,7 @@
  * 1.0 eay - First version 29/07/92
  */
 #include <stdio.h>
-#include "cryptlib.h"
+#include "cryptlib.hh"
 #include <openssl/stack.h>
 #include <openssl/objects.h>
 
@@ -95,7 +95,7 @@ _STACK *sk_dup(_STACK *sk)
 	char **s;
 
 	if ((ret=sk_new(sk->comp)) == NULL) goto err;
-	s=(char **)OPENSSL_realloc((char *)ret->data,
+	s=(char **)OOSSL_realloc(ret->data,
 		(unsigned int)sizeof(char *)*sk->num_alloc);
 	if (s == NULL) goto err;
 	ret->data=s;
@@ -146,7 +146,7 @@ int sk_insert(_STACK *st, void *data, int loc)
 	if(st == NULL) return 0;
 	if (st->num_alloc <= st->num+1)
 		{
-		s=OPENSSL_realloc((char *)st->data,
+		s=OOSSL_realloc(st->data,
 			(unsigned int)sizeof(char *)*st->num_alloc*2);
 		if (s == NULL)
 			return(0);

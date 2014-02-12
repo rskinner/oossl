@@ -60,7 +60,7 @@
 #include <stdlib.h>
 #include <errno.h>
 #define USE_SOCKETS
-#include "cryptlib.h"
+#include "cryptlib.hh"
 #include <openssl/bio.h>
 #if defined(OPENSSL_SYS_NETWARE) && defined(NETWARE_BSDSOCK)
 #include <netdb.h>
@@ -909,7 +909,7 @@ int BIO_accept(int sock, char **addr)
 	    NI_NUMERICHOST|NI_NUMERICSERV)) break;
 	nl = strlen(h)+strlen(s)+2;
 	p = *addr;
-	if (p)	{ *p = '\0'; p = OPENSSL_realloc(p,nl);	}
+	if (p)	{ *p = '\0'; p = OOSSL_realloc(p,nl);	}
 	else	{ p = OPENSSL_malloc(nl);		}
 	if (p==NULL)
 		{

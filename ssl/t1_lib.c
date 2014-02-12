@@ -116,6 +116,7 @@
 #include <openssl/ocsp.h>
 #include <openssl/rand.h>
 #include "ssl_locl.h"
+#include "cryptlib.hh"
 
 #ifdef __cplusplus
 extern "C" {
@@ -2498,7 +2499,7 @@ static int ssl_scan_clienthello_tlsext(SSL *s, unsigned char **p, unsigned char 
 						
 					/* Add the (non-duplicated) entry */
 					s->s3->tlsext_custom_types_count++;
-					s->s3->tlsext_custom_types = OPENSSL_realloc(
+					s->s3->tlsext_custom_types = OOSSL_realloc(
 							s->s3->tlsext_custom_types,
 							s->s3->tlsext_custom_types_count * 2);
 					if (s->s3->tlsext_custom_types == NULL)

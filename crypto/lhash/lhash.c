@@ -99,6 +99,7 @@
 #include <stdlib.h>
 #include <openssl/crypto.h>
 #include <openssl/lhash.h>
+#include "cryptlib.hh"
 
 const char lh_version[]="lhash" OPENSSL_VERSION_PTEXT;
 
@@ -343,7 +344,7 @@ static void expand(_LHASH *lh)
 	if ((lh->p) >= lh->pmax)
 		{
 		j=(int)lh->num_alloc_nodes*2;
-		n=(LHASH_NODE **)OPENSSL_realloc(lh->b,
+		n=(LHASH_NODE **)OOSSL_realloc(lh->b,
 			(int)(sizeof(LHASH_NODE *)*j));
 		if (n == NULL)
 			{
@@ -371,7 +372,7 @@ static void contract(_LHASH *lh)
 	lh->b[lh->p+lh->pmax-1]=NULL; /* 24/07-92 - eay - weird but :-( */
 	if (lh->p == 0)
 		{
-		n=(LHASH_NODE **)OPENSSL_realloc(lh->b,
+		n=(LHASH_NODE **)OOSSL_realloc(lh->b,
 			(unsigned int)(sizeof(LHASH_NODE *)*lh->pmax));
 		if (n == NULL)
 			{

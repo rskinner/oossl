@@ -795,7 +795,7 @@ static void* kssl_calloc(size_t nmemb, size_t size)
 }
 
 #define kssl_malloc(size) OPENSSL_malloc((size))
-#define kssl_realloc(ptr, size) OPENSSL_realloc(ptr, size)
+#define kssl_realloc(ptr, size) OOSSL_realloc(ptr, size)
 #define kssl_free(ptr) OPENSSL_free((ptr))
 
 

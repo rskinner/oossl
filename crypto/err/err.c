@@ -114,7 +114,7 @@
 #include <stdio.h>
 #include <stdarg.h>
 #include <string.h>
-#include "cryptlib.h"
+#include "cryptlib.hh"
 #include <openssl/lhash.h>
 #include <openssl/crypto.h>
 #include <openssl/buffer.h>
@@ -1097,7 +1097,7 @@ void ERR_add_error_vdata(int num, va_list args)
 			if (n > s)
 				{
 				s=n+20;
-				p=OPENSSL_realloc(str,s+1);
+				p=OOSSL_realloc(str,s+1);
 				if (p == NULL)
 					{
 					OPENSSL_free(str);

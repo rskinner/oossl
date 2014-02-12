@@ -58,7 +58,7 @@
 
 #include <stdio.h>
 #include <limits.h>
-#include "cryptlib.h"
+#include "cryptlib.hh"
 #include <openssl/asn1.h>
 #include <openssl/asn1_mac.h>
 
@@ -385,7 +385,7 @@ int ASN1_STRING_set(ASN1_STRING *str, const void *_data, int len)
 		if (c == NULL)
 			str->data=OPENSSL_malloc(len+1);
 		else
-			str->data=OPENSSL_realloc(c,len+1);
+			str->data=OOSSL_realloc(c,len+1);
 
 		if (str->data == NULL)
 			{

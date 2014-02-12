@@ -61,6 +61,7 @@
 #include <openssl/err.h>
 #include <openssl/asn1t.h>
 #include <openssl/objects.h>
+#include "cryptlib.hh"
 
 
 int EC_GROUP_get_basis_type(const EC_GROUP *group)
@@ -1292,7 +1293,7 @@ int	i2d_ECPrivateKey(EC_KEY *a, unsigned char **out)
 
 		if (tmp_len > buf_len)
 			{
-			unsigned char *tmp_buffer = OPENSSL_realloc(buffer, tmp_len);
+			unsigned char *tmp_buffer = OOSSL_realloc(buffer, tmp_len);
 			if (!tmp_buffer)
 				{
 				ECerr(EC_F_I2D_ECPRIVATEKEY, ERR_R_MALLOC_FAILURE);

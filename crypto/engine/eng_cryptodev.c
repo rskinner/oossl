@@ -722,7 +722,7 @@ static int cryptodev_digest_update(EVP_MD_CTX *ctx, const void *data,
 
 	if (!(ctx->flags & EVP_MD_CTX_FLAG_ONESHOT)) {
 		/* if application doesn't support one buffer */
-		state->mac_data = OPENSSL_realloc(state->mac_data, state->mac_len + count);
+		state->mac_data = OOSSL_realloc(state->mac_data, state->mac_len + count);
 
 		if (!state->mac_data) {
 			printf("cryptodev_digest_update: realloc failed\n");

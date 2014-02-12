@@ -72,7 +72,7 @@
 #include <ctype.h>
 #include <assert.h>
 #include <limits.h>
-#include "cryptlib.h"
+#include "cryptlib.hh"
 #ifndef NO_SYS_TYPES_H
 #include <sys/types.h>
 #endif
@@ -746,7 +746,7 @@ doapr_outch(
 		*sbuffer = NULL;
 	    } else {
 		*maxlen += 1024;
-		*buffer = OPENSSL_realloc(*buffer, *maxlen);
+		*buffer = OOSSL_realloc(*buffer, *maxlen);
 	    }
 	}
 	/* What to do if *buffer is NULL? */

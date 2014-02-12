@@ -159,6 +159,7 @@
 #ifndef OPENSSL_NO_ENGINE
 #include <openssl/engine.h>
 #endif
+#include "cryptlib.hh"
 
 #ifdef __cplusplus
 extern "C" {
@@ -1739,7 +1740,7 @@ int SSL_CTX_set_custom_cli_ext(SSL_CTX *ctx, unsigned short ext_type,
 		if (ext_type == ctx->custom_cli_ext_records[i].ext_type)
 			return 0;
 
-	ctx->custom_cli_ext_records = OPENSSL_realloc(ctx->custom_cli_ext_records,
+	ctx->custom_cli_ext_records = OOSSL_realloc(ctx->custom_cli_ext_records,
 						      (ctx->custom_cli_ext_records_count + 1) * 
 						      sizeof(custom_cli_ext_record));
 	if (!ctx->custom_cli_ext_records) {
@@ -1767,7 +1768,7 @@ int SSL_CTX_set_custom_srv_ext(SSL_CTX *ctx, unsigned short ext_type,
 		if (ext_type == ctx->custom_srv_ext_records[i].ext_type)
 			return 0;
 
-	ctx->custom_srv_ext_records = OPENSSL_realloc(ctx->custom_srv_ext_records,
+	ctx->custom_srv_ext_records = OOSSL_realloc(ctx->custom_srv_ext_records,
 						      (ctx->custom_srv_ext_records_count + 1) * 
 						      sizeof(custom_srv_ext_record));
 	if (!ctx->custom_srv_ext_records) {
@@ -1868,7 +1869,7 @@ int SSL_CTX_set_cli_supp_data(SSL_CTX *ctx,
 		if (supp_data_type == ctx->cli_supp_data_records[i].supp_data_type)
 			return 0;
 
-	ctx->cli_supp_data_records = OPENSSL_realloc(ctx->cli_supp_data_records,
+	ctx->cli_supp_data_records = OOSSL_realloc(ctx->cli_supp_data_records,
 	  (ctx->cli_supp_data_records_count+1) * sizeof(cli_supp_data_record));
 	if (!ctx->cli_supp_data_records)
 		{
@@ -1897,7 +1898,7 @@ int SSL_CTX_set_srv_supp_data(SSL_CTX *ctx,
 		if (supp_data_type == ctx->srv_supp_data_records[i].supp_data_type)
 			return 0;
 
-	ctx->srv_supp_data_records = OPENSSL_realloc(ctx->srv_supp_data_records,
+	ctx->srv_supp_data_records = OOSSL_realloc(ctx->srv_supp_data_records,
 	  (ctx->srv_supp_data_records_count+1) * sizeof(srv_supp_data_record));
 	if (!ctx->srv_supp_data_records)
 		{
